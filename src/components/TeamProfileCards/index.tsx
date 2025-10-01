@@ -98,6 +98,7 @@ export function MaintainersRow(): JSX.Element {
       <TeamProfileCardCol name="Andre Oliveira" githubUrl="https://github.com/uandreo"> </TeamProfileCardCol>
       <TeamProfileCardCol name="Assem Hafez" githubUrl="https://github.com/Assem-Uber"> </TeamProfileCardCol>
       <TeamProfileCardCol name="Bowen Xiao" githubUrl="https://github.com/bowenxia"> </TeamProfileCardCol>
+      <TeamProfileCardCol name="Chris Warren" githubUrl="https://github.com/c-warren"> </TeamProfileCardCol>
       <TeamProfileCardCol name="David Porter" githubUrl="https://github.com/davidporter-id-au"> </TeamProfileCardCol>
       <TeamProfileCardCol name="Felipe Imanishi" githubUrl="https://github.com/fimanishi" linkedinUrl="https://www.linkedin.com/in/fimanishi">
       Felipe is a Software Engineer contributing to Cadence from San Francisco. He found CS later in his career, and he is glad he did. Felipe is always looking to learn more and Cadence is provides an endless source of topics. Outside of work, Felipe is probably doing something with his two sons.
@@ -107,10 +108,6 @@ export function MaintainersRow(): JSX.Element {
       <TeamProfileCardCol name="Jakob Haahr Taankvist" githubUrl="https://github.com/jakobht" linkedinUrl="https://www.linkedin.com/in/jakob-taankvist/">
         Jakob Haahr Taankvist is a Software Engineer, contributing to the Cadence project from Denmark. With a background in formal games and traffic optimization, he now explores workflow orchestration.<br />
         Outside of work, Jakob is on a mission to evaluate how well Danish ice hockey arenas double as programming spots while cheering on his son's games. 🏒💻
-      </TeamProfileCardCol>
-      <TeamProfileCardCol name="Josué Alexander Ibarra" githubUrl="https://github.com/ibarrajo" linkedinUrl="https://www.linkedin.com/in/elninja/">
-        Josue Ibarra is a Developer Advocate for Cadence Workflows at Uber, based in Seattle.<br />
-        Passionate about building better systems with Cadence, he balances his love for coding with hobbies like motorcycles, sailing, and cooking. 🚀🍳🏍️
       </TeamProfileCardCol>
       <TeamProfileCardCol name="Nate Mortensen" githubUrl="https://github.com/natemort">
         Nate originally got into programming by modding Minecraft and has been contributing to open source software ever since.
@@ -127,8 +124,6 @@ export function MaintainersRow(): JSX.Element {
       <TeamProfileCardCol name="Steven L" githubUrl="https://github.com/Groxx"> </TeamProfileCardCol>
       <TeamProfileCardCol name="Tim Li" githubUrl="https://github.com/timl3136"> </TeamProfileCardCol>
       <TeamProfileCardCol name="tubignat" githubUrl="https://github.com/tubignat"> </TeamProfileCardCol>
-      <TeamProfileCardCol name="Vinay Kumar Yadav" githubUrl="https://github.com/vinay116"> </TeamProfileCardCol>
-      <TeamProfileCardCol name="Vsevolod Kaloshin" githubUrl="https://github.com/arzonus"> </TeamProfileCardCol>
     </div>
   );
 }
@@ -142,11 +137,6 @@ export function TSCRow(): JSX.Element {
       His career started with his own startup, followed with Microsoft, working for another startup and Meta. <br />
       His prior work involves building Bing's/Azure's key value store (ObjectStore), distributed NAS, and search engines. <br />
       He's into outdoors and endurance sports while not working.
-      </TeamProfileCardCol>
-      <TeamProfileCardCol name="Taylan Isikdemir" githubUrl="https://github.com/taylanisikdemir" linkedinUrl="https://www.linkedin.com/in/taylan-isikdemir">
-      Taylan majored in CS and his software engineering journey includes working at Microsoft Azure, Google Cloud, and helping build an observability startup from ground up. <br />
-      Taylan is tech lead of Cadence team at Uber, based in Seattle. <br />
-      When he is not working, you'll probably find him playing basketball or kickboxing.
       </TeamProfileCardCol>
       <TeamProfileCardCol name="Kisel Jan" githubUrl="https://github.com/dkrotx"> </TeamProfileCardCol>
     </div>
