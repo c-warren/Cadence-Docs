@@ -1,6 +1,16 @@
 ---
 title: Moving to gRPC
 
+description: This post covers Cadence's migration from TChannel/Thrift to gRPC, including the approach taken, system overview, migration steps for server and clients, and current status at Uber.
+keywords:
+  - cadence grpc
+  - cadence tchannel
+  - cadence grpc migration
+  - cadence thrift
+  - cadence go sdk grpc
+  - cadence transport
+  - cadence protocol
+  - cadence server upgrade
 date: 2021-10-19
 authors: vytautas-karpavicius
 tags:
@@ -52,6 +62,6 @@ In order to start using gRPC please upgrade Cadence server to **[v0.22.0](https:
 * With internal tooling updated, we are starting to onboard services to use the Go SDK gRPC compatibility layer.
 
 ---
-Do not hesitate to reach out to us ([cadence-oss@googlegroups.com](mailto:cadence-oss@googlegroups.com) or [slack](http://t.uber.com/cadence-slack)) if you have any questions.
+Do not hesitate to reach out to us ([cadence-oss@googlegroups.com](mailto:cadence-oss@googlegroups.com) or [slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)) if you have any questions.
 
 The Uber Cadence team

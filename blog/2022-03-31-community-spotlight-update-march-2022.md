@@ -1,6 +1,15 @@
 ---
 title: Cadence Community Spotlight Update - March 2022
 
+description: Monthly Cadence community update for March 2022, highlighting the updated topology diagram, community statistics, StackOverflow usage guidelines, and recent Cadence articles and events.
+keywords:
+  - cadence community spotlight
+  - cadence march 2022
+  - cadence community update
+  - cadence topology diagram
+  - cadence stackoverflow
+  - cadence statistics
+  - cadence office hours
 date: 2022-03-31
 authors: sharanf
 tags:
@@ -74,6 +83,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Webinar : Spinning up Your Workflows with Cadence](https://info.instaclustr.com/webinar-spinning-workflows-cadence.html)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

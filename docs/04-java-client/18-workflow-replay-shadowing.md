@@ -1,12 +1,30 @@
 ---
 layout: default
 title: Workflow Replay and Shadowing
+description: This page explains how to use Cadence Workflow Replayer and Workflow Shadower in Java to detect incompatible workflow definition changes before they impact production traffic.
+keywords:
+  - cadence workflow replay java
+  - cadence workflow shadowing java
+  - cadence replay test java
+  - cadence non-deterministic change java
+  - cadence workflow versioning test
+  - WorkflowReplayer java
+  - cadence shadow test java
+  - cadence java workflow replay tutorial
 permalink: /docs/java-client/workflow-replay-shadowing
 ---
 
-# Workflow Replay and Shadowing
-
 In the Versioning section, we mentioned that incompatible changes to workflow definition code could cause non-deterministic issues when processing workflow tasks if versioning is not done correctly. However, it may be hard for you to tell if a particular change is incompatible or not and whether versioning logic is needed. To help you identify incompatible changes and catch them before production traffic is impacted, we implemented Workflow Replayer and Workflow Shadower.
+
+## Samples
+
+Runnable replay and shadowing samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Replay tests** | Replay tests against recorded workflow histories | [replaytests](https://github.com/cadence-workflow/cadence-java-samples/tree/master/src/test/java/com/uber/cadence/samples/replaytests) |
+| **Shadowing test** | Local shadowing test using `WorkflowShadower` | [HelloWorkflowShadowingTest.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/test/java/com/uber/cadence/samples/hello/HelloWorkflowShadowingTest.java) |
+| **Shadowing worker** | Worker running in shadow mode to replay production workflows | [ShadowTraffic.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/shadowing/ShadowTraffic.java) |
 
 ## Workflow Replayer
 
@@ -41,11 +59,11 @@ WorkflowReplayer.replayWorkflowExecution(historyFileObject, MyWorkflowImpl.class
 
 #### Step 3: Catch returned exception
 
-If an exception is returned from the replay method, it means there's a incompatible change in the workflow definition and the error message will contain more information regarding where the non-deterministic error happens.
+If an exception is returned from the replay method, it means there's an incompatible change in the workflow definition and the error message will contain more information regarding where the non-deterministic error happens.
 
 ### Sample Replay Test
 
-This sample is also available in our samples repo at [here](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/test/java/com/uber/cadence/samples/hello/HelloActivityReplayTest.java).
+Replay test samples are available under [replaytests](https://github.com/cadence-workflow/cadence-java-samples/tree/master/src/test/java/com/uber/cadence/samples/replaytests) in the samples repo, including [HelloActivityReplayTest.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/test/java/com/uber/cadence/samples/replaytests/HelloActivityReplayTest.java):
 
 ```java
 public class HelloActivityReplayTest {
@@ -94,6 +112,10 @@ Complete documentation on shadow options which includes default values, accepted
 Local shadowing test is similar to the replay test. First create a workflow shadower with optional shadow and replay options, then register the workflow that needs to be shadowed. Finally, call the `Run` method to start the shadowing. The method will return if shadowing has finished or any non-deterministic error is found.
 
 Here's a simple example. The example is also available [here](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/test/java/com/uber/cadence/samples/hello/HelloWorkflowShadowingTest.java).
+
+:::note
+`WorkflowServiceTChannel` applies to the 3.x Java client. Java 4.x removed TChannel; use `WorkflowServiceGrpc`.
+:::
 
 ```java
 public void testShadowing() throws Throwable {

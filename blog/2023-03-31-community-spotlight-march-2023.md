@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - March 2023
 
+description: Monthly Cadence community update for March 2023, announcing a Cadence talk at the Linux Foundation Open Source Summit, introducing the new Cadence Developer Advocate, and sharing community activity stats.
+keywords:
+  - cadence community spotlight
+  - cadence march 2023
+  - cadence community update
+  - cadence open source summit
+  - cadence linux foundation
+  - cadence developer advocate
+  - cadence support activity
+  - cadence conference
 date: 2023-03-31
 authors: sharanf
 tags:
@@ -16,7 +26,7 @@ We are very pleased to let you know that a talk on Cadence has been accepted for
 The talk called [Cadence: The New Open Source Project for Building Complex Distributed Applications](https://ossna2023.sched.com/event/1K5B1) will be given by [Ender Demirkaya](https://www.linkedin.com/in/enderdemirkaya/) and [Emrah Seker](https://www.linkedin.com/in/emrahseker/) If you are planning to attend the Open Source Summit then please don't forget to attend the talk and take time catch up with Ender and Emrah!
 
 ## Community Activity ##
-Our Slack #support channel has been very active over the last few months as we continue to get an continual stream of questions. Here are the stats:
+Our Slack #support channel has been very active over the last few months as we continue to get a continual stream of questions. Here are the stats:
 
 - February 2023 : 16 questions asked
 - March 2023 : 12 questions asked
@@ -44,6 +54,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Webinar: Microservices - A Modern Orchestration Approach with Cadence](https://netapp.zoom.us/webinar/register/WN__5fuwxmNQuWeZ6DiI5wUqg)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

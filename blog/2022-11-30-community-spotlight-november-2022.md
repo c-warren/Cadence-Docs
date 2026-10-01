@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - November 2022
 
+description: Monthly Cadence community update for November 2022, featuring Uber's Cadence-powered push notification ML system, presentations at DeveloperWeek Enterprise and W-JAX, and recent news.
+keywords:
+  - cadence community spotlight
+  - cadence november 2022
+  - cadence community update
+  - cadence uber push notifications
+  - cadence developerweek
+  - cadence w-jax
+  - cadence conference talk
+  - cadence microservices orchestration
 date: 2022-11-30
 authors: sharanf
 tags:
@@ -15,13 +25,13 @@ Please see below for a roundup of the highlights:
 
 This month Uber Engineering published a really nice article on one of the ways they are using Cadence. The article is called [How Uber Optimizes the Timing of Push Notifications using ML and Linear Programming](https://www.uber.com/en-US/blog/how-uber-optimizes-push-notifications-using-ml/).
 
-The Uber team take you through the details of the problem that they are looking to solve, so you can understand the scope limitations and depedencies - so please take a look.
+The Uber team take you through the details of the problem that they are looking to solve, so you can understand the scope, limitations, and dependencies - so please take a look.
 
 ## Cadence @ DeveloperWeek Enterprise ##
 
-DevNetwork run a series of conferences and during November Cadence was featured in at [DeveloperWeek Enterprise](https://www.developerweek.com/global/conference/enterprise/). [Ender Demirkaya](https://www.linkedin.com/in/enderdemirkaya/) and [Ben Slater](https://www.linkedin.com/in/ben-slater-2720562/) presented a talk called [Espress Complex Business Logic as Code with Open Source Cadence!](https://embed.emamo.com/event/developerweek-enterprise-2022/s/express-complex-business-logic-as-code-with-open-source-cadence-WKLMvo).
+DevNetwork run a series of conferences and during November Cadence was featured in at [DeveloperWeek Enterprise](https://www.developerweek.com/global/conference/enterprise/). [Ender Demirkaya](https://www.linkedin.com/in/enderdemirkaya/) and [Ben Slater](https://www.linkedin.com/in/ben-slater-2720562/) presented a talk called [Express Complex Business Logic as Code with Open Source Cadence!](https://embed.emamo.com/event/developerweek-enterprise-2022/s/express-complex-business-logic-as-code-with-open-source-cadence-WKLMvo).
 
-It is good to see that we are finding new channels for us to present the benefits of using Cadence. Huge hanks to Ben and Ender for the presentation and to everyone that attended.
+It is good to see that we are finding new channels for us to present the benefits of using Cadence. Huge thanks to Ben and Ender for the presentation and to everyone that attended.
 
 <!-- truncate -->
 
@@ -45,6 +55,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Cadence Technical Office Hours - 30th January 2023 @ 9am PT](https://calendar.google.com/calendar/u/0/embed?src=e6r40gp3c2r01054id7e99dlac@group.calendar.google.com&ctz=America/Los_Angeles)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

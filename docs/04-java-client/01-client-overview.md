@@ -1,10 +1,17 @@
 ---
 layout: default
 title: Client SDK Overview
+description: This page provides an overview of the Cadence Java client SDK packages, including APIs for activities, workflows, workers, and testing, along with links to JavaDoc and sample code.
+keywords:
+  - cadence java client
+  - cadence java sdk
+  - cadence java api
+  - cadence java samples
+  - java workflow sdk
+  - cadence javadoc
+  - cadence java packages
 permalink: /docs/java-client/client-overview
 ---
-
-# Client SDK Overview
 
 - [Cadence Java Samples](https://github.com/cadence-workflow/cadence-java-samples)
 - [JavaDoc documentation](https://javadoc.io/doc/com.uber.cadence/cadence-client)
@@ -42,14 +49,13 @@ on any host, the second and third must run on the same host as the first one. Th
 
 ## Differences between Java and Golang Clients
 
-While many features are already supported in the Cadence Golang client, some features are missing in the Java client. The Cadence development team aims for feature parity between the two clients, with new features typically being implemented in cadence-go-client first.
+While many features are already supported in the Cadence Golang client, some features are missing in the Java client. The Cadence development team aims for feature parity between the two clients, with new features typically being implemented in cadence-go-client first. Both clients support a customer-provided [context propagator](https://github.com/cadence-workflow/cadence-java-client/blob/master/src/main/java/com/uber/cadence/context/ContextPropagator.java).
 
 ### Feature Comparison
 
 | Feature                                                | Go Client | Java Client | Issue |
 |--------------------------------------------------------|-----------|-------------|-------|
 | **Up to Date Samples**                                 | Supported | No          | [Link](https://github.com/cadence-workflow/cadence-java-samples/issues) |
-| **Customer provided context propagator**               | Supported | No          |       |
 | **Poller autoscale**                                   | Supported | No          |       |
 | **Auto heartbeat[^auto-heartbeat]**                    | Supported | No          |       |
 | **Jitter start**                                       | Supported | No          |       |

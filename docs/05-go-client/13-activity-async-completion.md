@@ -1,21 +1,39 @@
 ---
 layout: default
 title: Async activity completion
+description: This page explains how to implement asynchronous activity completion in Cadence, where an external system completes an activity after the activity function has already returned.
+keywords:
+  - cadence async activity completion
+  - asynchronous activity
+  - activity task token
+  - CompleteActivity
+  - ErrResultPending
+  - external activity completion
+  - go client async activity
+  - cadence go async activity completion tutorial
 permalink: /docs/go-client/activity-async-completion
 ---
-
-# Asynchronous activity completion
 
 There are certain scenarios when completing an :activity: upon completion of its function is not possible
 or desirable. For example, you might have an application that requires user input in order to complete
 the :activity:. You could implement the :activity: with a polling mechanism, but a simpler and less
 resource-intensive implementation is to asynchronously complete a Cadence :activity:.
 
-There two parts to implementing an asynchronously completed activity:
+There are two parts to implementing an asynchronously completed activity:
 
 1. The :activity: provides the information necessary for completion from an external system and notifies
 the Cadence service that it is waiting for that outside callback.
 2. The external service calls the Cadence service to complete the :activity:.
+
+## Samples
+
+Runnable async completion sample:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Expense approval** | Expense report workflow whose activity is completed by an external approval server | [expense](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/expense) |
+
+---
 
 The following example demonstrates the first part:
 

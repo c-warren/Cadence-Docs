@@ -1,0 +1,165 @@
+---
+layout: default
+title: Workers
+description: How to create a Cadence client, define a registry of workflows and activities, and start a worker in Python.
+keywords:
+  - cadence python worker
+  - cadence python client setup
+  - cadence python registry
+  - cadence python task list
+  - cadence python workers tutorial
+permalink: /docs/python-client/workers
+---
+
+# Workers
+
+A worker connects to the Cadence server, polls a task list for workflow and activity tasks, and executes them. Three objects work together: `Client`, `Registry`, and `Worker`.
+
+## Samples
+
+Runnable worker samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Minimal worker** | Creates a client and starts a worker with a workflow registry | [run_worker.py](https://github.com/cadence-workflow/cadence-samples/blob/master/python_sdk_samples/schedule_samples/run_worker.py) |
+| **Agent workflow worker** | Hosts human-in-the-loop agent workflows | [main.py](https://github.com/cadence-workflow/cadence-samples/blob/master/python_sdk_samples/openai_samples/human_in_the_loop/main.py) |
+
+## Client
+
+`Client` connects to the Cadence frontend over gRPC. It is an async context manager.
+
+```python
+from cadence.client import Client
+
+CADENCE_TARGET = "localhost:7833"  # replace with your Cadence frontend address
+
+async with Client(domain="my-domain", target=CADENCE_TARGET) as client:
+    # client is ready here
+    ...
+```
+
+| Option | Description |
+|---|---|
+| `domain` | Cadence domain (required) |
+| `target` | Cadence frontend address as `host:port` (required) |
+| `identity` | Identity string shown in workflow history (default: auto-generated) |
+| `data_converter` | Custom data converter for serializing workflow arguments |
+| `service_name` | Cadence service name sent in RPC metadata (default: `cadence-frontend`) |
+| `caller_name` | Caller name sent in RPC metadata (default: `cadence-client`) |
+| `metrics_emitter` | Metrics backend; defaults to `NoOpMetricsEmitter` |
+| `context_propagators` | Sequence of context propagators used for workflow headers |
+| `credentials` | Optional gRPC channel credentials |
+| `compression` | gRPC compression mode |
+| `interceptors` | Additional gRPC async client interceptors |
+| `channel_arguments` | Additional gRPC channel arguments |
+
+## Registry
+
+`Registry` holds workflow and activity definitions. Create one per worker process (or share one across multiple workers).
+
+```python
+from cadence.worker import Registry
+
+registry = Registry()
+```
+
+Register workflows and activities on the registry using decorators:
+
+```python
+@registry.workflow()
+class MyWorkflow:
+    @workflow.run
+    async def run(self, name: str) -> str:
+        ...
+
+@registry.activity()
+async def my_activity(input: str) -> str:
+    ...
+```
+
+You can also register definitions imperatively:
+
+```python
+registry.register_activity(my_activity)
+```
+
+## Worker
+
+`Worker` is an async context manager that polls the task list and dispatches tasks.
+
+```python
+from cadence.worker import Worker
+
+async with Client(domain="my-domain", target=CADENCE_TARGET) as client:
+    async with Worker(client, "my-task-list", registry):
+        # Worker is polling; keep alive until interrupted
+        await asyncio.Event().wait()
+```
+
+`Worker` runs two pollers internally: one for decision (workflow) tasks and one for activity tasks. Both run concurrently.
+
+### Worker options
+
+```python
+async with Worker(
+    client,
+    "my-task-list",
+    registry,
+    max_concurrent_activity_execution_size=200,
+    max_concurrent_decision_task_execution_size=100,
+    activity_task_pollers=4,
+    decision_task_pollers=4,
+):
+    await asyncio.Event().wait()
+```
+
+| Option | Description | Default |
+|---|---|---|
+| `max_concurrent_activity_execution_size` | Maximum concurrently executing activities | `1000` |
+| `max_concurrent_decision_task_execution_size` | Maximum concurrently executing decision tasks | `1000` |
+| `task_list_activities_per_second` | Activity dispatch rate limit for the task list; `0.0` leaves it unlimited | `0.0` |
+| `activity_task_pollers` | Number of activity pollers | `2` |
+| `decision_task_pollers` | Number of decision pollers | `2` |
+| `disable_activity_worker` | Disable activity polling | `False` |
+| `disable_workflow_worker` | Disable decision-task polling | `False` |
+| `identity` | Worker identity recorded by Cadence | Generated from the client identity and task list |
+| `metrics_emitter` | Metrics backend | Inherited from the client |
+| `context_propagators` | Context propagators | Inherited from the client |
+
+### Disabling one poller
+
+```python
+Worker(client, "my-task-list", registry, disable_activity_worker=True)
+Worker(client, "my-task-list", registry, disable_workflow_worker=True)
+```
+
+## Full example
+
+```python
+import asyncio
+from cadence.client import Client
+from cadence.worker import Worker, Registry
+from cadence import workflow
+
+CADENCE_TARGET = "localhost:7833"  # replace with your Cadence frontend address
+
+registry = Registry()
+
+@registry.workflow()
+class GreetingWorkflow:
+    @workflow.run
+    async def run(self, name: str) -> str:
+        return f"Hello, {name}!"
+
+async def main():
+    async with Client(domain="my-domain", target=CADENCE_TARGET) as client:
+        print("Worker running, press Ctrl-C to stop")
+        async with Worker(client, "my-task-list", registry):
+            await asyncio.Event().wait()
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        pass
+```

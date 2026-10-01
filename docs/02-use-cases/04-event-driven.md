@@ -1,16 +1,36 @@
 ---
 layout: default
 title: Event driven application
+description: This page describes how Cadence supports event-driven applications by handling asynchronous signals, managing state transitions, and triggering actions when conditions are met.
+keywords:
+  - cadence event driven
+  - cadence signals
+  - cadence async events
+  - cadence event handling
+  - cadence loyalty program
+  - cadence fraud detection
+  - cadence use case
+  - cadence event driven application tutorial
 permalink: /docs/use-cases/event-driven
 ---
 
-# Event driven application
-
-Many applications listen to multiple :event: sources, update the state of correspondent business entities,
+Many applications listen to multiple :event: sources, update the state of corresponding business entities,
 and have to execute actions if some state is reached.
 Cadence is a good fit for many of these. It has direct support for asynchronous :event:events: (aka :signal:signals:),
 has a simple programming model that obscures a lot of complexity
 around state persistence, and ensures external action execution through built-in retries.
+
+## Samples
+
+Runnable event-driven samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Signal handling** | Workflow that waits for and reacts to external signals | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/signal) · [Java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloSignal.java) |
+| **Event accumulation** | Counter workflow that accumulates signal events, like the loyalty-points example below | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/signalcounter) |
+| **Signal and response** | Sends a signal to a workflow and reads back its response | [Java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloSignalAndResponse.java) |
+
+---
 
 Real-world examples:
 

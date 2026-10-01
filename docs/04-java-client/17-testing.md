@@ -1,12 +1,20 @@
 ---
 layout: default
 title: Testing
+description: This page explains how to write unit and integration tests for Cadence workflows and activities in Java using TestActivityEnvironment and TestWorkflowEnvironment.
+keywords:
+  - cadence testing java
+  - cadence unit test java
+  - TestActivityEnvironment java
+  - TestWorkflowEnvironment java
+  - cadence workflow test java
+  - cadence activity test java
+  - cadence java test example
+  - cadence java testing tutorial
 permalink: /docs/java-client/testing
 ---
 
-# Activity Test Environment
-
-[TestActivityEnvironment](https://www.javadoc.io/static/com.uber.cadence/cadence-client/2.7.9-alpha/com/cadence-workflow/cadence/testing/TestActivityEnvironment.html) is the helper class for unit testing activity implementations. Supports calls to Activity methods from the tested activities. An example test:
+[TestActivityEnvironment](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/testing/TestActivityEnvironment.html) is the helper class for unit testing activity implementations. Supports calls to Activity methods from the tested activities. An example test:
 
 [See full example here.](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/test/java/com/uber/cadence/samples/hello/HelloActivityTest.java)
 
@@ -32,6 +40,16 @@ permalink: /docs/java-client/testing
    }
 
 ```
+
+## Samples
+
+Runnable test samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Hello sample tests** | Unit tests for the Hello samples using the test environments | [hello tests](https://github.com/cadence-workflow/cadence-java-samples/tree/master/src/test/java/com/uber/cadence/samples/hello) |
+| **Activity test** | Activity unit test with `TestActivityEnvironment` | [HelloActivityTest.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/test/java/com/uber/cadence/samples/hello/HelloActivityTest.java) |
+| **Saga workflow test** | Workflow test that covers compensation logic | [TripBookingWorkflowTest.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/test/java/com/uber/cadence/samples/bookingsaga/TripBookingWorkflowTest.java) |
 
 ## Workflow Test Environment
 TestWorkflowEnvironment provides workflow unit testing capabilities.

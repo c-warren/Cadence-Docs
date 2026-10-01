@@ -1,15 +1,33 @@
 ---
 layout: default
 title: Retries
+description: This page explains how to configure retry policies for Cadence activities and workflows in Java using RetryOptions, including backoff, max attempts, and expiration settings.
+keywords:
+  - cadence retry java
+  - cadence RetryOptions java
+  - cadence retry policy java
+  - activity retry java
+  - cadence backoff retry
+  - cadence workflow retry
+  - cadence java retry example
+  - cadence java retries tutorial
 permalink: /docs/java-client/retries
 ---
 
-# Activity and workflow retries
 :activity:Activities: and :workflow:workflows: can fail due to various intermediate conditions. In those cases, we want
 to retry the failed :activity: or child :workflow: or even the parent :workflow:. This can be achieved
-by supplying an optional [retry options](https://www.javadoc.io/static/com.uber.cadence/cadence-client/2.7.9-alpha/com/cadence-workflow/cadence/common/RetryOptions.Builder.html#setInitialInterval-java.time.Duration-).
+by supplying an optional [retry options](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/common/RetryOptions.Builder.html#setInitialInterval(java.time.Duration)).
 
 > Note that sometimes it's also referred as RetryPolicy
+
+## Samples
+
+Runnable retry samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Activity retry** | Activity retried automatically with `RetryOptions` | [HelloActivityRetry.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloActivityRetry.java) |
+| **Retries with compensation** | Saga that combines activity retries with compensation on failure | [bookingsaga](https://github.com/cadence-workflow/cadence-java-samples/tree/master/src/main/java/com/uber/cadence/samples/bookingsaga) |
 
 ## RetryOptions
 A RetryOptions includes the following.
@@ -47,6 +65,8 @@ Error and CancellationException are never retried and are not even passed to thi
 
 It's probably too complicated to learn how to set those timeouts by reading the above. There is an easy way to deal with it.
 
+When `HeartbeatTimeout` is omitted, the Java client fills it from `ScheduleToClose`. Set a shorter heartbeat timeout and call the [heartbeat API](/docs/java-client/implementing-activities#activity-heart-beating) when a long-running activity needs faster worker-failure detection.
+
 **LocalActivity without retry**: Use ScheduleToClose for overall timeout
 
 **Regular Activity without retry**:
@@ -58,7 +78,7 @@ It's probably too complicated to learn how to set those timeouts by reading the 
 
 1. Use ScheduleToClose as timeout of each attempt.
 2. Use retryOptions.InitialInterval, retryOptions.BackoffCoefficient, retryOptions.MaximumInterval to control backoff.
-3. Use retryOptions.ExperiationInterval as overall timeout of all attempts.
+3. Use retryOptions.ExpirationInterval as overall timeout of all attempts.
 4. Leave retryOptions.MaximumAttempts empty.
 
 
@@ -67,7 +87,7 @@ It's probably too complicated to learn how to set those timeouts by reading the 
 2. Leave ScheduleToStart and StartToClose empty
 3. If ScheduleToClose is too large(like 10 mins), then set Heartbeat timeout to a smaller value like 10s. Call heartbeat API inside activity regularly.
 4. Use retryOptions.InitialInterval, retryOptions.BackoffCoefficient, retryOptions.MaximumInterval to control backoff.
-5. Use retryOptions.ExperiationInterval as overall timeout of all attempts.
+5. Use retryOptions.ExpirationInterval as overall timeout of all attempts.
 6. Leave retryOptions.MaximumAttempts empty.
 
 ## Activity Timeout Internals

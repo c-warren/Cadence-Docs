@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Executing activities
+description: This page explains how to execute Cadence activities from a Go workflow using workflow.ExecuteActivity, including how to configure activity options such as timeouts and task lists.
+keywords:
+  - cadence execute activity go
+  - workflow.ExecuteActivity go
+  - cadence activity options go
+  - cadence activity timeout go
+  - cadence go sdk execute activity
+  - cadence activity scheduling go
+  - cadence golang activity execution
+  - cadence go execute activity tutorial
 permalink: /docs/go-client/execute-activity
 ---
-
-# Executing activities
 
 The primary responsibility of a :workflow: implementation is to schedule :activity:activities: for execution. The
 most straightforward way to do this is via the library method `workflow.ExecuteActivity`. The following
@@ -27,6 +35,19 @@ if err := future.Get(ctx, &result); err != nil {
     return err
 }
 ```
+
+## Samples
+
+Runnable samples for executing activities:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Basic execution** | Executes activities and collects their results | [activities](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/activities) |
+| **Parallel fan-out** | Runs multiple activities in parallel and waits for all of them | [branch](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/branch) |
+| **Pick first** | Races parallel activities and cancels the losers after the first completes | [pickfirst](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/pickfirst) |
+
+---
+
 Let's take a look at each component of this call.
 
 ## Activity options
@@ -39,8 +60,9 @@ values, then the same context instance can be used when calling `workflow.Execut
 
 ## Activity timeouts
 
-There can be various kinds of timeouts associated with an :activity:. Cadence guarantees that :activity:activities:
-are executed *at most once*, so an :activity: either succeeds or fails with one of the following timeouts:
+There can be various kinds of timeouts associated with an :activity:. An :activity: may execute more than once,
+especially when a timeout or worker failure causes a configured retry. Activity implementations should therefore be
+idempotent. An :activity: either succeeds or fails with one of the following timeouts:
 
 Timeout | Description
 --- | ---
@@ -95,5 +117,10 @@ In this example, we called the `Get()` method on the returned future immediately
 However, this is not necessary. If you want to execute multiple :activity:activities: in parallel, you can
 repeatedly call `workflow.ExecuteActivity()`, store the returned futures, and then wait for all
 :activity:activities: to complete by calling the `Get()` methods of the future at a later time.
+
+That pattern schedules every :activity: at once, which is fine for a handful of them. At larger scale it can
+exhaust the server's per-workflow pending-:activity: limit and overwhelm the services your :activity:activities:
+call. To fan out over a large list with a cap on how many run at the same time, see
+[Batch Future](/docs/go-client/batch-future).
 
 To implement more complex wait conditions on returned future objects, use the `cadence.Selector` class.

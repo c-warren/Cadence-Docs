@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Signals
+description: This page explains how to use Cadence signals in Java to send data to running workflows asynchronously and durably, including implementing signal handlers and blocking on signal channels.
+keywords:
+  - cadence signals java
+  - cadence signal workflow java
+  - send signal workflow java
+  - SignalMethod java
+  - cadence async signal
+  - cadence signal channel
+  - cadence java signal example
+  - cadence java signals tutorial
 permalink: /docs/java-client/signals
 ---
-
-# Signals
 
 :signal:Signals: provide a mechanism to send data directly to a running :workflow:. Previously, you had
 two options for passing data to the :workflow: implementation:
@@ -25,6 +33,16 @@ a running :workflow:. When a :signal: is received for a running :workflow:, Cade
 and the payload in the :workflow: history. The :workflow: can then process the :signal: at any time
 afterwards without the risk of losing the information. The :workflow: also has the option to stop
 execution by blocking on a :signal: channel.
+
+## Samples
+
+Runnable signal samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Signal handler** | Workflow with a signal method that updates its state | [HelloSignal.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloSignal.java) |
+| **Signal and response** | Sends a signal to a workflow and reads back its response | [HelloSignalAndResponse.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloSignalAndResponse.java) |
+| **Signal from client** | Starts a workflow and signals it from client code | [SignalSample.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/clientsamples/SignalSample.java) |
 
 ## Implement Signal Handler in Workflow
 
@@ -158,11 +176,11 @@ USAGE:
 You may want to signal workflows without running the command line.
 
 The
-[WorkflowClient](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/cadence-workflow/cadence/client/WorkflowClient.html) API allows you to send signal (or SignalWithStartWorkflow) from outside of the workflow
+[WorkflowClient](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/client/WorkflowClient.html) API allows you to send signal (or SignalWithStartWorkflow) from outside of the workflow
 to send a :signal: to the current :workflow:.
 
-Note that when using `newWorkflowStub` to signal a workflow, you MUST NOT passing WorkflowOptions.
+Note that when using `newWorkflowStub` to signal a workflow, you MUST NOT pass WorkflowOptions.
 
-The [WorkflowStub](https://www.javadoc.io/static/com.uber.cadence/cadence-client/2.7.9-alpha/com/cadence-workflow/cadence/client/WorkflowClient.html#newWorkflowStub-java.lang.Class-com.uber.cadence.client.WorkflowOptions-) with WorkflowOptions is only for starting workflows.
+The [WorkflowStub](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/client/WorkflowClient.html#newWorkflowStub(java.lang.Class,com.uber.cadence.client.WorkflowOptions)) with WorkflowOptions is only for starting workflows.
 
-The [WorkflowStub](https://www.javadoc.io/static/com.uber.cadence/cadence-client/2.7.9-alpha/com/cadence-workflow/cadence/client/WorkflowClient.html#newWorkflowStub-java.lang.Class-java.lang.String-) without WorkflowOptions is for signal or [query](/docs/java-client/queries)
+The [WorkflowStub](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/client/WorkflowClient.html#newWorkflowStub(java.lang.Class,java.lang.String)) without WorkflowOptions is for signal or [query](/docs/java-client/queries)

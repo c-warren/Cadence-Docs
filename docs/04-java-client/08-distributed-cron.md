@@ -1,17 +1,36 @@
 ---
 layout: default
 title: Distributed CRON
+description: This page explains how to schedule recurring Cadence workflows using cron expressions in Java with CronSchedule in StartWorkflowOptions.
+keywords:
+  - cadence cron workflow java
+  - cadence distributed cron
+  - cadence scheduled workflow
+  - CronSchedule java
+  - cadence recurring workflow
+  - cadence cron schedule
+  - cadence java cron example
+  - cadence java distributed cron tutorial
 permalink: /docs/java-client/distributed-cron
 ---
-
-# Distributed CRON
 
 It is relatively straightforward to turn any Cadence :workflow: into a Cron :workflow:. All you need
 is to supply a cron schedule when starting the :workflow: using the CronSchedule
 parameter of
-[StartWorkflowOptions](https://static.javadoc.io/com.uber.cadence/cadence-client/2.5.1/com/cadence-workflow/cadence/client/WorkflowOptions.html).
+[StartWorkflowOptions](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/client/WorkflowOptions.html).
 
 You can also start a :workflow: using the Cadence :CLI: with an optional cron schedule using the `--cron` argument.
+
+## Samples
+
+Runnable periodic workflow samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Cron workflow** | Recurring workflow driven by the `CronSchedule` start option | [HelloCron.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloCron.java) |
+| **Periodic loop** | Periodic execution implemented with `continueAsNew` instead of cron | [HelloPeriodic.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloPeriodic.java) |
+
+---
 
 For :workflow:workflows: with CronSchedule:
 

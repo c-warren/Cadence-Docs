@@ -1,17 +1,40 @@
 ---
 layout: default
 title: Error handling
+description: This page explains how to handle different error types returned by activities and child workflows in Cadence Go client, including custom errors, timeout errors, panic errors, and canceled errors.
+keywords:
+  - cadence error handling
+  - activity errors
+  - workflow errors
+  - CustomError
+  - GenericError
+  - TimeoutError
+  - PanicError
+  - CanceledError
+  - go client error handling
+  - cadence go error handling tutorial
 permalink: /docs/go-client/error-handling
 ---
-
-# Error handling
 
 An :activity:, or child :workflow:, might fail and you could handle errors differently based on different
 error cases. If the :activity: returns an error as `errors.New()` or `fmt.Errorf()`, those errors will
 be converted to `workflow.GenericError`. If the :activity: returns an error as
 `cadence.NewCustomError(“err-reason”, details)`, that error will be converted to `*cadence.CustomError`.
 There are other types of errors such as `workflow.TimeoutError`, `workflow.CanceledError` and
-`workflow.PanicError`. Following is an example of what your error code might look like:
+`workflow.PanicError`.
+
+## Samples
+
+Samples that show pieces of error handling:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Activity cancellation** | Cancels a running activity and handles the cancellation | [cancelactivity](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/cancelactivity) |
+| **Retry on failure** | Activity failure handled through automatic retries | [retryactivity](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/retryactivity) |
+
+---
+
+Following is an example of what your error code might look like:
 
 ```go
 err := workflow.ExecuteActivity(ctx, YourActivityFunc).Get(ctx, nil)

@@ -1,88 +1,68 @@
-# [Cadence docs](https://cadenceworkflow.io) &middot; ![Build and Deploy](https://img.shields.io/github/actions/workflow/status/cadence-workflow/Cadence-Docs/publish-to-gh-pages.yml?label=Build%20and%20Deploy&link=https%3A%2F%2Fgithub.com%2Fcadence-workflow%2FCadence-Docs%2Factions%2Fworkflows%2Fpublish-to-gh-pages.yml) ![Nightly integration test](https://img.shields.io/github/actions/workflow/status/cadence-workflow/Cadence-Docs/nightly-integration-test.yml?label=Nightly%20integration%20test&link=https%3A%2F%2Fgithub.com%2Fcadence-workflow%2FCadence-Docs%2Factions%2Fworkflows%2Fnightly-integration-test.yml)
+# Cadence docs
 
+[![Build and Deploy](https://img.shields.io/github/actions/workflow/status/cadence-workflow/Cadence-Docs/publish-to-gh-pages.yml?label=Build%20and%20Deploy)](https://github.com/cadence-workflow/Cadence-Docs/actions/workflows/publish-to-gh-pages.yml)
+[![Nightly integration test](https://img.shields.io/github/actions/workflow/status/cadence-workflow/Cadence-Docs/nightly-integration-test.yml?label=Nightly%20integration%20test)](https://github.com/cadence-workflow/Cadence-Docs/actions/workflows/nightly-integration-test.yml)
 
+[cadenceworkflow.io](https://cadenceworkflow.io) is the documentation site for [Cadence](https://github.com/cadence-workflow/cadence). This repository contains its [Docusaurus](https://docusaurus.io/) source.
 
-# cadenceworkflow.io
+> 📚 **Contributing to Cadence?** The [Contributing Guide](https://cadenceworkflow.io/community/how-to-contribute/getting-started) covers the project-wide process. For site setup and development, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-[Cadence docs](https://cadenceworkflow.io) is built using [Docusaurus](https://docusaurus.io/).
+## Quick start
 
-> 📚 **New to contributing to Cadence?** Check out our [Contributing Guide](https://cadenceworkflow.io/community/how-to-contribute/getting-started) for an overview of the contribution process across all Cadence repositories. This document contains cadence backend specific setup and development instructions.
-
-### Installation
+Requires Node.js 22 or newer.
 
 ```console
 npm install
-```
-
-### Local Development
-
-```console
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window at http://localhost:3000/. Most changes are reflected live without having to restart the server.
+The development server runs at http://localhost:3000/ and opens a browser window. Most edits reload without a restart.
 
-### Build
+To write the static site to `build/` for any static host, run:
 
 ```console
 npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+[CONTRIBUTING.md](CONTRIBUTING.md) also covers Node version pinning, npm registry setup, running a production preview before you open a pull request, and adding or moving pages.
 
-### Environment Variables
+## How the site is deployed
 
-In order to deploy to multiple environments, some configuration options in `docusaurus.config.ts` are made available for override through environment variables.
+The live site is published by the **Build and Deploy** workflow ([`publish-to-gh-pages.yml`](.github/workflows/publish-to-gh-pages.yml)), which runs on every push to `master` and can also be triggered manually. It builds with `npm ci && npm run build`, deploys the `build` directory to the `gh-pages` branch, and then asks the Algolia crawler to re-index the site.
+
+You can also run `npm run deploy` locally to build and push to `gh-pages`, using either `USE_SSH=true npm run deploy` or `GIT_USER=<your GitHub username> npm run deploy`. In normal use, let the workflow handle deployment.
+
+### Configuration
+
+Environment variables can override selected settings in [`docusaurus.config.ts`](docusaurus.config.ts) for other deployment targets. The workflow reads them from the repository's `production` environment.
+
+For cadenceworkflow.io, set:
 
 ```bash
-# Can be replaced by your GH pages url, ie. https://<userId>.github.io/
+# Site origin, used to build absolute URLs.
 CADENCE_DOCS_URL=https://cadenceworkflow.io
 
-# For GitHub pages deployment, it is often /<projectName>/ defaults to `/`
-BASE_URL=/cadence-docs/
+# Served from the domain root.
+BASE_URL=/
 
-# For Github pages only, this is your Github org/user name.
+# GitHub org that owns the repository.
 ORGANIZATION_NAME=cadence-workflow
 ```
 
-#### CNAME
+When a variable is unset, the workflow uses defaults based on the repository name, so a fork deploys to `/<repo>/` with no extra configuration. Fork preview setup is documented in [CONTRIBUTING.md](CONTRIBUTING.md). The values above apply only to cadenceworkflow.io and should not be copied to a fork.
 
-A file `static/CNAME` should be present in order to deploy to a [github pages site that uses a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). I.E. cadenceworkflow.io
-This file is created by the deploy action, but if deploying from a local environment, care should be taken to ensure the file exists.
+### Custom domain
 
-### Deployment
+A [custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) such as cadenceworkflow.io needs a `static/CNAME` file. Content under `static/` is copied to the build root, placing that file at the site root. The file is not committed; the deploy workflow writes it from the `CUSTOM_DOMAIN` secret. Forks do not have that secret or a custom domain.
 
-Using SSH:
+## Contributing
 
-```console
-USE_SSH=true npm run deploy
-```
+Documentation changes are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) explains how to set up the site locally, verify your work, and open a pull request.
 
-Not using SSH:
+That guide also covers [homepage carousel updates](CONTRIBUTING.md#updating-the-featured-reading-carousel), driven by [`src/data/featuredLinks.yaml`](src/data/featuredLinks.yaml), and [release data updates](CONTRIBUTING.md#updating-release-data) under `static/data/releases/`. A scheduled workflow usually handles the release data.
 
-```console
-GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
-
-
-### Updating Release Data
-
-The release pages rely on data from GitHub that is persisted as json files under `static/data/releases/`.
-In order to update the release information for display, this can be done manually or be set up as part of the CI/CD process by running the `scripts/fetch-releases.sh` script. Script uses the [GitHub CLI](https://cli.github.com/) to fetch the release data.
-
-Automatic updates to release data are performed by a github action `fetch-release-data`. Which will check if new data is available, and if so update the release data with the latest information and open a branch named `fetch-release-data` and open a PR if one is not open already.
-
-Manual approval is required before merging and continuing to deployment.
-
-# NPM Registry
-
-Ensure you have a `.npmrc` [file](https://docs.npmjs.com/cli/v9/configuring-npm/npmrc/) configured with `registry=https://registry.npmjs.org/`.
-This will ensure the dependencies are pulled from the correct source and to prevent internal npm registries from being pushed onto the package-lock.json
+For questions, join the **#cadence-contributors** channel on the CNCF Slack workspace, or see the [contact page](https://cadenceworkflow.io/community/contact-us) for other options.
 
 ## License
 
-The source code in this repository is licensed under the Apache 2.0 License.
-The documentation in this repository is licensed under the Creative Commons Attribution 4.0 International License.
-See [LICENSE](https://github.com/cadence-workflow/Cadence-Docs/blob/master/LICENSE) for details.
+The source code in this repository is licensed under the Apache License 2.0. The documentation content is licensed under the Creative Commons Attribution 4.0 International License. See [LICENSE.md](LICENSE.md) for details.

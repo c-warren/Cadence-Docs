@@ -1,6 +1,16 @@
 ---
 title: 2024 Cadence Yearly Roadmap Update
 
+description: The 2024 Cadence yearly roadmap update covering what Cadence is, its benefits, team growth, community milestones, and planned improvements for scalability, reliability, and developer experience.
+keywords:
+  - cadence roadmap 2024
+  - cadence yearly update
+  - cadence workflow orchestration
+  - cadence features
+  - cadence scalability
+  - cadence team
+  - cadence future plans
+
 date: 2024-07-11
 authors: enderdemirkaya
 tags:
@@ -59,7 +69,7 @@ Today the Cadence team comprises 26 people. We have people working from Uber’s
 
 ### Community
 
-Cadence is an actively built open source project. We invest in both our internal and open source community ([Slack](http://t.uber.com/cadence-slack), [Github](https://github.com/cadence-workflow/cadence/issues)), responding to new features and enhancements.
+Cadence is an actively built open source project. We invest in both our internal and open source community ([Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ), [Github](https://github.com/cadence-workflow/cadence/issues)), responding to new features and enhancements.
 
 ### Scale
 
@@ -211,7 +221,7 @@ In the next year, we plan to finish our seamless client based migration to be ab
 
 Do you want to hear more about Cadence? Do you need help with your set-up or usage? Are you evaluating your options? Do you want to contribute? Feel free to join our community and reach out to us.
 
-Slack: [https://uber-cadence.slack.com/](https://uber-cadence.slack.com/)
+Slack: [https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)
 
 Github: [https://github.com/cadence-workflow/cadence](https://github.com/cadence-workflow/cadence)
 

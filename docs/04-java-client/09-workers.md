@@ -1,14 +1,33 @@
 ---
 layout: default
 title: Worker service
+description: This page explains how to configure and start a Cadence worker service in Java using WorkerFactory, including registering workflow and activity implementations.
+keywords:
+  - cadence worker java
+  - cadence WorkerFactory java
+  - java worker service cadence
+  - cadence worker setup java
+  - register workflow java
+  - cadence task list java
+  - cadence worker configuration
+  - cadence java worker tutorial
 permalink: /docs/java-client/workers
 ---
-
-# Worker service
 
 A :worker: or *:worker: service* is a service that hosts the :workflow: and :activity: implementations. The :worker: polls the *Cadence service* for :task:tasks:, performs those :task:tasks:, and communicates :task: execution results back to the *Cadence service*. :worker:Worker: services are developed, deployed, and operated by Cadence customers.
 
 You can run a Cadence :worker: in a new or an existing service. Use the framework APIs to start the Cadence :worker: and link in all :activity: and :workflow: implementations that you require the service to execute.
+
+## Samples
+
+Runnable worker samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Worker setup** | Creates a worker, registers implementations, and starts polling | [HelloWorkerSetup.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloWorkerSetup.java) |
+| **Spring Boot worker** | Spring Boot application that wires up Cadence workers | [CadenceSamplesApplication.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/spring/CadenceSamplesApplication.java) |
+
+---
 
 ```java
   WorkerFactory factory = WorkerFactory.newInstance(workflowClient,
@@ -52,6 +71,6 @@ Worker.Factory factory = new Worker.Factory(DOMAIN,
     factory.start();
 ```
 
-The [WorkerFactoryOptions](https://www.javadoc.io/static/com.uber.cadence/cadence-client/2.7.9-alpha/com/cadence-workflow/cadence/worker/WorkerFactoryOptions.html) includes those that need to be shared across workers on the hosts like thread pool, sticky cache.
+The [WorkerFactoryOptions](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/worker/WorkerFactoryOptions.html) includes those that need to be shared across workers on the hosts like thread pool, sticky cache.
 
-In [WorkerOptions](https://www.javadoc.io/static/com.uber.cadence/cadence-client/2.7.9-alpha/com/cadence-workflow/cadence/worker/WorkerOptions.Builder.html) you can customize things like pollerOptions, activities per second.
+In [WorkerOptions](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/worker/WorkerOptions.Builder.html) you can customize things like pollerOptions, activities per second.

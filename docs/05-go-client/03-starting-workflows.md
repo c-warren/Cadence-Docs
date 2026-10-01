@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Starting workflows
+description: This page explains how to start Cadence workflow executions from Go code using client.StartWorkflow, including starting by function reference or registered name.
+keywords:
+  - cadence start workflow go
+  - cadence go client StartWorkflow
+  - cadence golang start workflow
+  - cadence workflow execution go
+  - cadence go sdk start workflow
+  - start workflow programmatically cadence
+  - cadence go workflow trigger
+  - cadence go start workflow tutorial
 permalink: /docs/go-client/start-workflows
 ---
-
-# Starting workflows
 
 Starting workflows can be done from any service that can send requests to
 the Cadence server. There is no requirement for workflows to be started from the
@@ -14,6 +22,16 @@ Generally workflows can either be started using a direct reference to the
 workflow code, or by referring to the registered name of the function. In
 [Workflow Registration](/docs/go-client/create-workflows/#registration) we show
 how to register the workflows.
+
+## Samples
+
+Runnable samples for starting workflows:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Basic starter** | Starter program that launches the hello world workflow | [main.go](https://github.com/cadence-workflow/cadence-samples/blob/master/new_samples/hello_world/main.go) |
+| **Delayed start** | Starts a workflow after a configured delay | [delaystart](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/delaystart) |
+| **Cancel and terminate** | Cancels or terminates a started workflow | [operations](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/operations) |
 
 ## Starting a workflow
 
@@ -28,8 +46,8 @@ function:
 import "go.uber.org/cadence/client"
 
 var cadenceClient client.Client 
-# Initialize cadenceClient
 
+// Initialize cadenceClient
 cadenceClient.StartWorkflow(
     ctx,
     client.StartWorkflowOptions{
@@ -44,7 +62,7 @@ cadenceClient.StartWorkflow(
 )
 ```
 
-The will start the workflow defined in the function `WorkflowFunc`, note that
+This will start the workflow defined in the function `WorkflowFunc`, note that
 for named workflows `WorkflowFunc` could be replaced by the name e.g.
 `"WorkflowFuncName"`. 
 
@@ -87,8 +105,8 @@ to the options like so,
 import "go.uber.org/cadence/client"
 
 var cadenceClient client.Client
-# Initialize cadenceClient
 
+// Initialize cadenceClient
 cadenceClient.StartWorkflow(
     ctx,
     client.StartWorkflowOptions{

@@ -1,13 +1,36 @@
 ---
 layout: default
 title: Testing
+description: This page explains how to write unit tests and functional tests for Cadence workflows using the Go test framework, including activity mocking, overriding, and testing signal handling.
+keywords:
+  - cadence workflow testing
+  - workflow unit test
+  - TestWorkflowEnvironment
+  - activity mocking
+  - workflow test framework
+  - go client testing
+  - cadence test suite
+  - mock activity
+  - cadence go workflow testing tutorial
 permalink: /docs/go-client/workflow-testing
 ---
 
-# Testing
-
 The Cadence Go client library provides a test framework to facilitate testing :workflow: implementations.
 The framework is suited for implementing unit tests as well as functional tests of the :workflow: logic.
+
+## Samples
+
+Workflow test samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Batch workflow tests** | Unit tests for a workflow that runs activities with bounded concurrency | [batch_workflow_test.go](https://github.com/cadence-workflow/cadence-samples/blob/master/new_samples/concurrency/batch_workflow_test.go) |
+| **Schedule workflow tests** | Unit tests for the schedule sample workflow | [schedule_workflow_test.go](https://github.com/cadence-workflow/cadence-samples/blob/master/new_samples/schedule/schedule_workflow_test.go) |
+| **Hello world test** | Minimal workflow unit test using the test environment | [helloworld_workflow_test.go](https://github.com/cadence-workflow/cadence-samples/blob/master/cmd/samples/recipes/helloworld/helloworld_workflow_test.go) |
+
+Most directories under [cmd/samples/recipes](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/recipes) include a `workflow_test.go` with more examples.
+
+---
 
 The following code implements unit tests for the `SimpleWorkflow` sample:
 
@@ -187,9 +210,9 @@ example, we assert that the “value” param has the same content as the value 
 ## Testing signals
 
 To test signals we can use the functions `s.env.SignalWorkflow`, and `s.env.SignalWorkflowByID`. These 
-functions needs to be called inside `s.env.RegisterDelayedCallback`, as the signal should be send while the 
+functions need to be called inside `s.env.RegisterDelayedCallback`, as the signal should be sent while the 
 :workflow: is running. It is important to register the signal before calling `s.env.ExecuteWorkflow`, otherwise
-the signal will not be send.
+the signal will not be sent.
 
 If our :workflow: is waiting for a signal with name `signalName` we can register 
 to send this signal *before* the workflow is executed like this:

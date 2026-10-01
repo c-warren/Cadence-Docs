@@ -1,14 +1,36 @@
 ---
 layout: default
 title: Activity and workflow retries
+description: This page explains how to configure retry policies for activities and workflows in Cadence using the Go client, including backoff settings, expiration intervals, and heartbeat-based progress recovery.
+keywords:
+  - cadence retries
+  - activity retry policy
+  - workflow retry
+  - retry backoff
+  - exponential backoff
+  - go client retries
+  - RetryPolicy
+  - heartbeat progress
+  - cadence go client
+  - cadence go retries tutorial
 permalink: /docs/go-client/retries
 ---
 
-# Activity and workflow retries
-
 :activity:Activities: and :workflow:workflows: can fail due to various intermediate conditions. In those cases, we want
 to retry the failed :activity: or child :workflow: or even the parent :workflow:. This can be achieved
-by supplying an optional retry policy. A retry policy looks like the following:
+by supplying an optional retry policy.
+
+## Samples
+
+Runnable retry sample:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Activity retry with heartbeat** | Activity retried automatically, resuming from its last heartbeat progress | [retryactivity](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/retryactivity) |
+
+---
+
+A retry policy looks like the following:
 
 ``` go
 // RetryPolicy defines the retry policy.
@@ -69,7 +91,7 @@ ctx = workflow.WithActivityOptions(ctx, ao)
 activityFuture := workflow.ExecuteActivity(ctx, SampleActivity, params)
 ```
 
-If :activity: heartbeat its progress before it failed, the retry attempt will contain the progress
+If :activity: heartbeats its progress before it fails, the retry attempt will contain the progress
 so :activity: implementation could resume from failed progress like:
 
 ``` go

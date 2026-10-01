@@ -1,5 +1,15 @@
 ---
-title: Cadence non-derministic errors common question Q&A (part 1)
+title: Cadence non-deterministic errors common question Q&A (part 1)
+
+description: A Q&A covering the most common questions about non-deterministic errors in Cadence, including which workflow and activity changes are safe and which will break existing executions.
+keywords:
+  - cadence non-deterministic errors
+  - cadence determinism Q&A
+  - workflow definition change
+  - activity definition change
+  - cadence versioning
+  - cadence workflow code change
+  - cadence history replay
 
 date: 2024-03-10
 authors: chopincode
@@ -13,13 +23,13 @@ tags:
 
 An Activity is the smallest unit of execution for Cadence and what happens inside activities are not recorded as historical events and therefore will not be replayed. In short, this change is deterministic and it is fine to modify logic inside activities.
 
-### Does changing the workflow definition trigger non-determinstic errors?
+### Does changing the workflow definition trigger non-deterministic errors?
 
 <b>YES</b>. This is a very typical non-deterministic error.
 
 When a new workflow code change is deployed, Cadence will find if it is compatible with
 Cadence history. Changes to workflow definition will fail the replay process of Cadence
-as it finds the new workflow definition imcompatible with previous historical events.
+as it finds the new workflow definition incompatible with previous historical events.
 
 Here is a list of common workflow definition changes.
 - Changing workflow parameter counts
@@ -33,7 +43,7 @@ trigger non-deterministic errors.
 
 <!-- truncate -->
 
-### Does changing activity definitions trigger non-determinstic errors?
+### Does changing activity definitions trigger non-deterministic errors?
 
 <b>YES</b>. Similar to workflow definition change, this is also a very typical non-deterministic error.
 
@@ -42,7 +52,7 @@ Activities are also recorded and replayed by Cadence. Therefore, changes to acti
 - Changing activity parameter types
 - Changing activity return types
 
-As activity paremeters are also positional, these two changes will NOT trigger non-deterministic errors.
+As activity parameters are also positional, these two changes will NOT trigger non-deterministic errors.
 - Changes of activity return values
 - Changing activity parameter names
 
@@ -68,4 +78,4 @@ You may introduce a new workflow registered to your worker and divert traffic to
 
 ### Does changes to local activities' definition trigger non-deterministic errors?
 
-Yes. Local activities are recorded and therefore replayed by Cadence. Imcompatible changes on local activity definitions will yield to non-deterministic errors.
+Yes. Local activities are recorded and therefore replayed by Cadence. Incompatible changes on local activity definitions will yield non-deterministic errors.

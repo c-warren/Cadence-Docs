@@ -1,6 +1,15 @@
 ---
 title: Cadence Community Spotlight Update - January 2022
 
+description: The first Cadence Community Spotlight monthly update, covering office hours, the new Code of Conduct, the November meetup recording, and recent Cadence news and articles.
+keywords:
+  - cadence community spotlight
+  - cadence january 2022
+  - cadence community update
+  - cadence news
+  - cadence office hours
+  - cadence code of conduct
+  - cadence meetup
 date: 2022-01-31
 authors: sharanf
 tags:
@@ -44,4 +53,4 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Webinar : What is Cadence? And is it right for you?](https://info.instaclustr.com/webinar-emea-what-is-cadence.html?_ga=2.191041518.510582234.1643223308-2138855655.1638190316)
 
-If you have any news or topics you'd like us to include in our next update then please join our [slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.

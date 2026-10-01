@@ -1,12 +1,34 @@
 ---
 layout: default
 title: Batch job
+description: This page explains how Cadence is used to run batch jobs involving external API calls, long-running operations, and incremental progress tracking via heartbeating activities.
+keywords:
+  - cadence batch job
+  - cadence heartbeat activity
+  - cadence long running activity
+  - cadence batch processing
+  - cadence durability
+  - cadence high throughput
+  - cadence use case
+  - cadence batch job tutorial
 permalink: /docs/use-cases/batch-job
 ---
 
 ## Batch job
 A lot of batch jobs are not pure data manipulation programs. For those, the existing big data frameworks are the best fit. Cadence is a more general orchestration mechanism and doesn't provide native SQL or worker data shuffle functionality out of the box, engineers wishing to rely on these would need to implement this functionality themselves.
 But if processing a record requires external API calls that might fail and potentially take a long time, Cadence might be preferable.
+
+## Samples
+
+Runnable samples covering the batch patterns on this page:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Bounded concurrency** | Processes a batch of items with a fixed number of parallel workers | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/concurrency) |
+| **Split and merge** | Partitions a batch across parallel activities and merges the results | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/splitmerge) |
+| **Heartbeat progress and resume** | Long-running activity that heartbeats and resumes from recorded progress, the runnable equivalent of the example below | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/retryactivity) |
+
+---
 
 #### Use Case:
 
@@ -23,7 +45,7 @@ This is used in production for customers who wish to work through large batch wo
 Heartbeating cadence activities are activities who emit their progress at an appropriate interval (usually every few seconds) indicating where they are up to. Optionally, they may use progress information (like an offset number or iterator) to resume their progress. However, this necessarily implies that:
 
 - If activities get restarted, they may redo some work, so this is not suitable for non-idempotent operations.
-- The activity will be handling all the progress, so apart from heartbeat information, debugging about the granular operations being performed is not necessarily visible as compared by doing each operation in a distinct activity. 
+- The activity will be handling all the progress, so apart from heartbeat information, debugging about the granular operations being performed is not necessarily visible as compared to doing each operation in a distinct activity. 
 
 ### What problems this solves
 
@@ -94,8 +116,8 @@ func setActivityOptions(ctx workflow.Context) workflow.Context {
         StartToCloseTimeout:    time.Hour,             // however long this activity is expected to take, maximum, from end to end. 
                                                        // This is workload dependent
         HeartbeatTimeout:       time.Second * 30,      // How long we should wait before deciding to restart the activity because the 
-                                                       // background thread hasn't checked in. Half a a minute is probably a bit 
-                                                       // overgenous. In the example above we're picking 5 seconds to heartbeat
+                                                       // background thread hasn't checked in. Half a minute is probably a bit 
+                                                       // overgenerous. In the example above we're picking 5 seconds to heartbeat
         
         // It is unrealistic to assume that a long running activity will succeed
         // so add a retry-policy to restart it when there's a failure. 

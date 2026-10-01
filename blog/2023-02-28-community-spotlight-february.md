@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - February 2023
 
+description: Monthly Cadence community update for February 2023, announcing the first community survey, clarifying the relationship between Cadence and Temporal, and highlighting DoorDash's real-time event processing use case.
+keywords:
+  - cadence community spotlight
+  - cadence february 2023
+  - cadence community update
+  - cadence community survey
+  - cadence vs temporal
+  - cadence doordash
+  - cadence kafka flink
+  - cadence open source
 date: 2023-02-28
 authors: sharanf
 tags:
@@ -43,6 +53,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [On Demand Webinar: Spinning Your Drones with Cadence and Apache Kafka](https://info.instaclustr.com/webinar-spinning-drones-cadence-kafka.html)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

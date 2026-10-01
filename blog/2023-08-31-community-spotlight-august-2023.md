@@ -1,6 +1,15 @@
 ---
 title: Cadence Community Spotlight Update - August 2023
 
+description: The August 2023 Cadence community spotlight highlighting new how-to blog posts, iWF ContinueAsNew guides, Helm chart contributions, and community Slack activity.
+keywords:
+  - cadence community spotlight
+  - cadence august 2023
+  - cadence iwf
+  - cadence continueAsNew
+  - cadence helm chart
+  - cadence news
+
 date: 2023-08-31
 authors: sharanf
 tags:
@@ -21,7 +30,7 @@ Here are the latest topics:
 
 - [Non-Determistic Errors, Replayers and Shadowers](https://cadenceworkflow.io/blog/2023/08/27/nondeterministic-errors-replayers-shadowers/)
 
-Even if you have not encountered these use cases - it is good to be prepared and have a solution ready.Please take a look and let us have your feedback.
+Even if you have not encountered these use cases - it is good to be prepared and have a solution ready. Please take a look and let us have your feedback.
 
 Chris is also going to take a look at the [Cadence Samples](https://cadenceworkflow.io/docs/java-client/client-overview/#samples) to make sure they are all working and if not - he's going to re-write them so that they do!
 
@@ -29,7 +38,7 @@ Thanks very much Chris for all the work you are doing to help improve the projec
 
 <!-- truncate -->
 
-## More iWF Examaples ##
+## More iWF Examples ##
 
 Community member [Quanzheng Long](https://www.linkedin.com/in/prclqz/) has also been busy writing this month. In previous blogs Long has told us about [iWF](https://github.com/indeedeng/iwf) that is a layer implemented over of Cadence.
 
@@ -45,11 +54,11 @@ Please take a look and if you've enjoyed reading them then let Long and us know!
 
 Last month we mentioned the Cadence Helm charts and all the previous work that had been done by [Mark Sagi-Kazar](https://www.linkedin.com/in/sagikazarmark/). We were looking to ensure they are maintained.
 
-So a special thanks goes out this month to [Edmondo](ttps://github.com/edmondop ) for contributing some work on the [Cadence Helm Chart](https://github.com/edmondop/cadence-helm-chart/).
+So a special thanks goes out this month to [Edmondo](https://github.com/edmondop) for contributing some work on the [Cadence Helm Chart](https://github.com/edmondop/cadence-helm-chart/).
 
 ## Community Support! ##
 
-Our [Slack](http://t.uber.com/cadence-slack) channel continues to be the main place where people are asking for help and support with Cadence. During August (which is supposed to be holiday season), we still had 9 questions raised around various topics.
+Our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel continues to be the main place where people are asking for help and support with Cadence. During August (which is supposed to be holiday season), we still had 9 questions raised around various topics.
 
 Huge thanks to the following community members who took time to respond and help others: David, Edmondo, Chris Qin, Rony Rahman and Ben Slater.
 
@@ -75,6 +84,6 @@ Please take a look and feel free to share via your own social media channels.
 
 - [On Demand Webinar: Spinning Your Drones with Cadence and Apache Kafka](https://www.instaclustr.com/events/spinning-your-drones-with-cadence-and-apache-kafka/)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack) #community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) #community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

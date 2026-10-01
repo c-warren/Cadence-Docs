@@ -1,10 +1,20 @@
 ---
 layout: default
 title: Queries
+description: This page explains how to query the state of a running Cadence workflow using built-in and custom query types, including consistent queries and how to register query handlers in Go.
+keywords:
+  - cadence queries
+  - workflow query
+  - query handler
+  - SetQueryHandler
+  - consistent query
+  - strong consistency query
+  - __stack_trace
+  - go client queries
+  - QueryWorkflow
+  - cadence go queries tutorial
 permalink: /docs/go-client/queries
 ---
-
-# Queries
 
 If a :workflow_execution: has been stuck at a state for longer than an expected period of time, you
 might want to :query: the current call stack. You can use the Cadence :CLI: to perform this :query:. For
@@ -16,6 +26,19 @@ This command uses `__stack_trace`, which is a built-in :query: type supported by
 library. You can add custom :query: types to handle :query:queries: such as :query:querying: the current state of a
 :workflow:, or :query:querying: how many :activity:activities: the :workflow: has completed. To do this, you need to set
 up a :query: handler using `workflow.SetQueryHandler`.
+
+## Samples
+
+Runnable query samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Query workflow state** | Custom query handlers exposing workflow state, including formatted responses | [query](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/query) |
+| **Consistent query** | Strongly consistent query against a signal-driven workflow | [consistentquery](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/consistentquery) |
+
+For queries that return formatted markdown rendered by Cadence Web, see [Custom Workflow Controls](/docs/concepts/workflow-queries-formatted-data).
+
+---
 
 The handler must be a function that returns two values:
 1. A serializable result

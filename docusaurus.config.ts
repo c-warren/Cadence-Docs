@@ -17,9 +17,19 @@ import { envReplace } from '@pnpm/config.env-replace';
 const defaultLocale = 'en';
 
 const config: Config = {
+  // Keep this short. Docs/blog titles are `{page} | ${title}`. Homepage
+  // document title and og:title are set in src/pages/index.tsx so they can
+  // self-identify the product without rewriting every other page.
   title: 'Cadence',
   tagline: 'Orchestrate with Confidence: The Open-Source Workflow Engine for Tomorrow',
   favicon: 'img/favicon.ico',
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    }
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 
   url: envReplace('${CADENCE_DOCS_URL:-https://cadenceworkflow.io}', process.env),
 
@@ -37,7 +47,6 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -81,18 +90,41 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        googleTagManager: {
-          containerId: 'G-W63QD8QE6E',
-        },
         gtag: {
           trackingID: 'G-W63QD8QE6E',
           anonymizeIP: true,
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          createSitemapItems: async (params) => {
+            const {defaultCreateSitemapItems, ...rest} = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return items.map((item) => {
+              if (item.url === 'https://cadenceworkflow.io/') {
+                return {...item, priority: 1.0};
+              }
+              if (item.url.includes('/docs/get-started')) {
+                return {...item, priority: 0.9};
+              }
+              if (item.url.includes('/faq/')) {
+                return {...item, priority: 0.8};
+              }
+              if (item.url.includes('/docs/')) {
+                return {...item, priority: 0.7};
+              }
+              if (item.url.includes('/blog/') && !item.url.includes('/tags') && !item.url.includes('/page/') && !item.url.includes('/authors')) {
+                return {...item, priority: 0.6};
+              }
+              return {...item, priority: 0.5};
+            });
+          },
         },
       } satisfies Preset.Options,
     ],
   ],
 
   plugins: [
+    './src/plugins/yaml-loader',
     [
       './src/plugins/changelog/index.js',
       {
@@ -131,28 +163,50 @@ const config: Config = {
       } satisfies DocsOptions,
     ],
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'faq',
+        path: 'faq',
+        routeBasePath: 'faq',
+        editUrl: 'https://github.com/cadence-workflow/Cadence-Docs/edit/master/faq/',
+        remarkPlugins: [npm2yarn],
+        sidebarPath: './sidebarsFAQ.js',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
+      } satisfies DocsOptions,
+    ],
+    [
       '@docusaurus/plugin-client-redirects',
       {
         // redirects here only work in production build, not development
         fromExtensions: ['html'],
-        createRedirects(routePath) {
-          if (routePath === '/docs' || routePath === '/docs/') {
-            return [`${routePath}/get-started`];
-          }
-          return [];
-        },
         redirects: [
-          {
-            from: ['/docs/support', '/docs/next/support'],
-            to: '/community/support',
-          },
           {
             from: ['/docs/team', '/docs/next/team'],
             to: '/community/team',
           },
           {
-            from: ['/docs/resources', '/docs/next/resources'],
-            to: '/community/resources',
+            from: ['/docs/about', '/docs/next/about'],
+            to: '/community/contact-us',
+          },
+          // Bare base paths returned 404s for inbound traffic (Google
+          // Search Console). The docs plugin (used by all three
+          // sections) does not auto-generate a listing page at
+          // routeBasePath, so /docs, /community, and /faq had no
+          // matching route. Redirect both the no-slash (canonical, per
+          // trailingSlash: false) and trailing-slash forms to a sane
+          // landing page that already exists in the navbar.
+          {
+            from: '/docs',
+            to: '/docs/get-started',
+          },
+          {
+            from: '/community',
+            to: '/community/contact-us',
+          },
+          {
+            from: '/faq',
+            to: '/faq/best-practices',
           },
         ],
       } satisfies ClientRedirectsOptions,
@@ -160,6 +214,13 @@ const config: Config = {
   ],
 
   headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '0985E180AA68E235',
+      },
+    },
     {
       tagName: 'link',
       attributes: {
@@ -202,20 +263,50 @@ const config: Config = {
     },
   ],
   themeConfig: {
+    // Site-wide <meta> only. Do not set description / og:title / og:description / og:url / twitter:*
+    // here — they duplicate every page and often win over DocItem Layout PageMetadata in crawlers.
+    // Per-page: docs/blog frontmatter `description` + `keywords`; homepage uses Layout `description` in index.tsx.
+    // og:image default: themeConfig.image below. og:url + og:locale: SiteMetadata + AlternateLangHeaders.
+    // twitter:card: theme SiteMetadata sets summary_large_image.
+    metadata: [
+      {
+        name: 'keywords',
+        content:
+          'Cadence, Workflow, Orchestration, CNCF, Open Source, Community, Support, GitHub, Stack Overflow, LinkedIn, YouTube, X',
+      },
+      {property: 'og:site_name', content: 'Cadence Workflow'},
+      {property: 'og:type', content: 'website'},
+    ],
+    headTags: [
+      // Declare some json-ld structured data
+      {
+        tagName: 'script',
+        attributes: {
+          type: 'application/ld+json',
+        },
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org/',
+          '@type': 'Organization',
+          name: 'Cadence Workflow',
+          url: 'https://cadenceworkflow.io/',
+          logo: 'https://cadenceworkflow.io/img/cadence-logo.svg',
+        }),
+      },
+    ],
 
     algolia: {
       // The application ID provided by Algolia
-      appId: 'J7SVDVT89Z',
+      appId: 'N9YD9IU5NA',
 
       // Public API key: it is safe to commit it
-      apiKey: 'e96333af9178875d6417a55ac276d718',
+      apiKey: 'b1e19704002d5d620299a443771ea84e',
 
       indexName: 'cadenceworkflow',
 
       // Optional: see doc section below
       contextualSearch: false,
 
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      // Optional: Specify domains where the navigation should occur through window.location instead of history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
       externalUrlRegex: 'external\\.com|domain\\.com',
 
       // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
@@ -236,7 +327,7 @@ const config: Config = {
       //... other Algolia params
     },
     // Replace with your project's social card
-    image: 'img/social-card-min.jpg',
+    image: 'img/social-card-min.png',
     navbar: {
       title: '',
       logo: {
@@ -259,10 +350,16 @@ const config: Config = {
           position: 'left'
         },
         {
-          to: '/community/support',
+          to: '/community/contact-us',
           label: 'Community',
           position: 'left',
           activeBaseRegex: `/community/`,
+        },
+        {
+          to: '/faq/best-practices',
+          label: 'FAQ',
+          position: 'left',
+          activeBaseRegex: `/faq/`,
         },
         {
           type: 'dropdown',
@@ -318,11 +415,32 @@ const config: Config = {
             },
             {
               label: 'Cadence Community on CNCF Slack',
-              href: 'https://communityinviter.com/apps/cloud-native/cncf',
+              href: 'https://inviter.co/cncf',
             },
             {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/cadenceworkflow/',
+            },
+            {
+              label: 'Reddit',
+              href: 'https://www.reddit.com/r/cadenceworkflow/',
+            },
+          ],
+        },
+        {
+          title: 'FAQ',
+          items: [
+            {
+              label: 'Bad Patterns and Best Practice Alternatives',
+              to: '/faq/best-practices',
+            },
+            {
+              label: 'Cadence vs Temporal',
+              to: '/faq/cadence-vs-temporal',
+            },
+            {
+              label: 'How to Add a New FAQ',
+              to: '/faq/how-to-add-a-new-faq',
             },
           ],
         },

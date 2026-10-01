@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - October 2022
 
+description: Monthly Cadence community update for October 2022, covering the DoorDash technical showcase featuring Cadence, the iWF interpreter for workflow project built on Cadence, and upcoming events.
+keywords:
+  - cadence community spotlight
+  - cadence october 2022
+  - cadence community update
+  - cadence doordash
+  - iwf cadence
+  - interpreter for workflow
+  - cadence ecosystem
+  - cadence meetup
 date: 2022-10-31
 authors: sharanf
 tags:
@@ -15,11 +25,11 @@ Please see below for a roundup of the highlights:
 
 It's always great to get the community together and we had planned to run another Cadence Meetup in early November. Unfortunately we didn't have enough time to get things organised so we've decided to postpone it. So please watch out for an announcement for the new Cadence meetup date.
 
-## Doordash Technnical Showcase Featuring Cadence
+## DoorDash Technical Showcase Featuring Cadence
 
 We have had some great feedback from people who attended Technical Showcase that was run this month by Doordash. It featured their financial products but also highlighted some of the key technologies they use...and guess what Cadence is one of them!
 
-If you missed the session then you will be happy to know that it was recorded and we've inlcuded a link to the [the recording on Youtube](https://www.youtube.com/watch?v=uNwbdQyLpns).
+If you missed the session then you will be happy to know that it was recorded and we've included a link to [the recording on YouTube](https://www.youtube.com/watch?v=uNwbdQyLpns).
 
 Thanks to the Doordash team for running the session and helping support Cadence by sharing their knowledge.
 
@@ -27,7 +37,7 @@ Thanks to the Doordash team for running the session and helping support Cadence 
 
 ## iWF Support for Cadence ##
 
-Community member [Quanzheng Long](https://www.linkedin.com/in/prclqz/) has been busy working on a new project that has been built on top of Cadence. The project is called [iWF - Interpreter for Workflow](https://github.com/indeedeng/iwf). It's great to see that Cadence is now growing it's own ecosystem!
+Community member [Quanzheng Long](https://www.linkedin.com/in/prclqz/) has been busy working on a new project that has been built on top of Cadence. The project is called [iWF - Interpreter for Workflow](https://github.com/indeedeng/iwf). It's great to see that Cadence is now growing its own ecosystem!
 
 Please feel free to take a look and let Long know what you think!
 
@@ -49,6 +59,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 - [Cadence Technical Office Hours - 28th November 2022 @ 9am PT](https://calendar.google.com/calendar/u/0/embed?src=e6r40gp3c2r01054id7e99dlac@group.calendar.google.com&ctz=America/Los_Angeles)
 
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

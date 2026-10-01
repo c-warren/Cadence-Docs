@@ -1,15 +1,22 @@
 ---
 layout: default
 title: Server Installation
+description: This page explains how to install and run a Cadence server locally using Docker, register a domain, and set up a worker service to get started.
+keywords:
+  - cadence server installation
+  - cadence docker
+  - cadence local setup
+  - cadence docker-compose
+  - cadence domain register
+  - install cadence
+  - cadence getting started
 permalink: /docs/get-started/installation
 ---
 
-# Install Cadence Service Locally
-
 To get started with Cadence, you need to set up three components successfully.
 
-* A Cadence server hosting dependencies that Cadence relies on such as Cassandra, Elastic Search, etc
-* A Cadence domain for you workflow application
+* A Cadence server hosting dependencies that Cadence relies on such as Cassandra, Elasticsearch, etc.
+* A Cadence domain for your workflow application
 * A Cadence worker service hosting your workflows
 
 ## 0. Prerequisite - Install docker
@@ -28,7 +35,7 @@ Then start Cadence Service by running:
 ```bash
 cd cadence/docker && docker-compose up
 ```
-Please keep this process running at background.
+Please keep this process running in the background.
 
 ## 2. Register a Domain Using the CLI
 In a new terminal, create a new domain called `test-domain` (or choose whatever name you like) by running:
@@ -56,7 +63,7 @@ Bad binaries to reset:
 $
 ```
 
-Please remember the domains you created because they will be used in your worker implementation and Cadence CLI  commands.
+Please remember the domains you created because they will be used in your worker implementation and Cadence CLI commands.
 
 ## What's Next
 So far you've successfully finished two prerequisites to your Cadence application. The next steps are to implement a simple worker service that hosts your workflows and to run your very first hello world Cadence workflow.

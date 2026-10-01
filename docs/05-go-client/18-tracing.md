@@ -1,10 +1,20 @@
 ---
 layout: default
 title: Tracing and context propagation
+description: This page explains how to configure distributed tracing with OpenTracing and propagate custom context across Cadence workflows and activities using context propagators.
+keywords:
+  - cadence tracing
+  - distributed tracing
+  - OpenTracing
+  - context propagation
+  - ContextPropagator
+  - Jaeger tracing
+  - HeaderWriter
+  - HeaderReader
+  - go client tracing
+  - cadence go tracing tutorial
 permalink: /docs/go-client/tracing
 ---
-
-# Tracing and context propagation
 
 ## Tracing
 
@@ -18,6 +28,15 @@ configure and leverage tracing, see the [OpenTracing documentation](https://open
 The OpenTracing support has been validated using [Jaeger](https://www.jaegertracing.io/), but other implementations
 mentioned [here](https://opentracing.io/docs/supported-tracers/) should also work. Tracing support utilizes generic context
 propagation support provided by the client.
+
+## Samples
+
+Runnable tracing and context propagation samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Tracing** | Workflow instrumented with a Jaeger tracer | [tracing](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/tracing) |
+| **Context propagation** | Custom context propagated across a workflow and an activity | [ctxpropagation](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/ctxpropagation) |
 
 ## Context Propagation
 
@@ -42,7 +61,7 @@ struct Header {
 The client leverages this to pass around selected context information. [HeaderReader](https://godoc.org/go.uber.org/cadence/internal#HeaderReader)
 and [HeaderWriter](https://godoc.org/go.uber.org/cadence/internal#HeaderWriter) are interfaces
 that allow reading and writing to the Cadence server headers. The client already provides [implementations](https://github.com/cadence-workflow/cadence-go-client/blob/master/internal/headers.go)
-for these. `HeaderWriter` sets a field in the header. Headers is a map, so setting a value for the the same key
+for these. `HeaderWriter` sets a field in the header. Headers is a map, so setting a value for the same key
 multiple times will overwrite the previous values. `HeaderReader` iterates through the headers map and runs the
 provided handler function on each key/value pair, allowing you to deal with the fields you are interested in.
 
@@ -85,7 +104,7 @@ type ContextPropagator interface {
 
 ### Is there a complete example?
 
-The [context propagation sample](https://github.com/cadence-workflow/cadence-samples/blob/master/cmd/samples/recipes/ctxpropagation/workflow.go)
+The [context propagation sample](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/ctxpropagation)
 configures a custom context propagator and shows context propagation of custom keys across a :workflow: and an :activity:.
 
 ### Can I configure multiple context propagators?

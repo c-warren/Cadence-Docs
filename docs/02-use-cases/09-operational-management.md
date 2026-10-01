@@ -1,12 +1,19 @@
 ---
 layout: default
 title: Operational management
+description: This page describes how Cadence is used for operational management systems that automate monitoring, recovery, provisioning, and configuration of databases and infrastructure.
+keywords:
+  - cadence operational management
+  - cadence database management
+  - cadence auto recovery
+  - cadence use case
+  - cadence self-operating
+  - cadence elasticsearch management
+  - cadence cassandra management
 permalink: /docs/use-cases/operational-management
 ---
 
-# Operational management
-
 Imagine that you have to create a self operating database similar to Amazon RDS. Cadence is used in multiple projects
-that automate managing and automatic recovery of various products like MySQL, Elasticsearch and Apache Cassandra.
+that automate managing and automatic recovery of various products like MySQL, Elasticsearch, and Apache Cassandra.
 
 Such systems are usually a mixture of different use cases. They need to monitor the status of resources using polling. They have to execute orchestration API calls to administrative interfaces of a database. They have to provision new hardware or Docker instances if necessary. They need to push configuration updates and perform other actions like backups periodically.

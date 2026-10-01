@@ -1,6 +1,15 @@
 ---
 title: Cadence Community Spotlight Update - July 2023
 
+description: The July 2023 Cadence community spotlight covering the Go client v1.0 release, the new quarterly release strategy, and plans for official Cadence Helm chart maintenance.
+keywords:
+  - cadence community spotlight
+  - cadence july 2023
+  - cadence go client v1.0
+  - cadence release strategy
+  - cadence helm charts
+  - cadence news
+
 date: 2023-07-31
 authors: sharanf
 tags:
@@ -14,9 +23,9 @@ Please see below for a roundup of the highlights:
 
 ## Getting Started with Cadence ##
 
-Are you new to  Cadence and want to understand the basic concepts and architecture? Well we have some great information for you!
+Are you new to Cadence and want to understand the basic concepts and architecture? Well we have some great information for you!
 
-Community member [Chris Qin](https://www.linkedin.com/in/chrisqin0610/) has written a [short blog post](https://cadenceworkflow.io/blog/2023/07/01/components-of-cadence-application-setup/) that takes you through the the three main components that make up a Cadence application. Please take a look and feel free to give us your comments and feedback.
+Community member [Chris Qin](https://www.linkedin.com/in/chrisqin0610/) has written a [short blog post](https://cadenceworkflow.io/blog/2023/07/01/components-of-cadence-application-setup/) that takes you through the three main components that make up a Cadence application. Please take a look and feel free to give us your comments and feedback.
 
 Thanks Chris for sharing your knowledge and helping others to get started.
 
@@ -30,7 +39,7 @@ Thanks very much to everyone who worked hard to get this release out!
 
 ## Cadence Release Strategy ##
 
-A recent discussion on the Cadence Release strategy was posted in [Cadence Github Discussions](https://github.com/cadence-workflow/cadence/discussions/5362) (and also our #general channel on our [Slack](http://t.uber.com/cadence-slack) about the approach we'd like to take for future releases. As a community we want to ensure code stability and to not burden people with having to upgrade frequently.
+A recent discussion on the Cadence Release strategy was posted in [Cadence Github Discussions](https://github.com/cadence-workflow/cadence/discussions/5362) (and also our #general channel on our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) about the approach we'd like to take for future releases. As a community we want to ensure code stability and to not burden people with having to upgrade frequently.
 
 Based on feedback from the community we will be introducing quarterly release cycles but also give people the ability to make use of patches and minor releases. We will be communicating the intention to make a release at least a month beforehand so that the community has time to finalise any features they want to be included in the upcoming release.
 
@@ -50,6 +59,6 @@ Huge thanks to Mark for all the work you have done and it's great to see the tas
 
 - None
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack) #community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) #community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

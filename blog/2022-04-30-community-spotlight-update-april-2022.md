@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - April 2022
 
+description: Monthly Cadence community update for April 2022, covering Cadence being named SD Times Open Source Project of the Week, the new LinkedIn and Twitter accounts, a workflow design proposal, and upcoming events.
+keywords:
+  - cadence community spotlight
+  - cadence april 2022
+  - cadence community update
+  - cadence sd times
+  - cadence open source project of the week
+  - cadence linkedin
+  - cadence twitter
+  - cadence workflow design
 date: 2022-04-30
 authors: sharanf
 tags:
@@ -57,6 +67,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 - [Cadence Technical Office Hours - 30th May 2022 @ 9am PT](https://calendar.google.com/calendar/u/0/embed?src=e6r40gp3c2r01054id7e99dlac@group.calendar.google.com&ctz=America/Los_Angeles)
 
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

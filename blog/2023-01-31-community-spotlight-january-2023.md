@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - January 2023
 
+description: Monthly Cadence community update for January 2023, announcing the closure of monthly office hours, updates to the iWF Golang and Java SDKs, and recent community news and articles.
+keywords:
+  - cadence community spotlight
+  - cadence january 2023
+  - cadence community update
+  - cadence office hours closed
+  - iwf golang sdk
+  - cadence iwf
+  - cadence temporal comparison
+  - cadence support slack
 date: 2023-01-31
 authors: sharanf
 tags:
@@ -15,14 +25,14 @@ We have been running Office Hours sessions every month since May last year. The 
 
 Thanks very much to [Ender Demirkaya](https://www.linkedin.com/in/enderdemirkaya/)and the Uber team for making themselves available for these sessions.
 
-Please remember that if you have question about Cadence or are facing a specific issue then  you can post your question in our #support [Slack](http://t.uber.com/cadence-slack) channel. If you also post the details on StackOverflow with the cadence workflow tag then there will be a searchable history for others who encounter the same issue to find a solution.
+Please remember that if you have question about Cadence or are facing a specific issue then  you can post your question in our #support [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel. If you also post the details on StackOverflow with the cadence workflow tag then there will be a searchable history for others who encounter the same issue to find a solution.
 
 <!-- truncate -->
 
 ## Update on iWF Support for Cadence ##
 Last October we featured an update in our monthly blog about [iWF - Interpreter for Workflow](https://github.com/indeedeng/iwf), a project built on top of Cadence by community member [Quanzheng Long](https://www.linkedin.com/in/prclqz/). It was announced recently that iWF has released a [Golang SDK](https://github.com/iworkflowio/iwf-golang-sdk) and updated  versions of the [Java SDK and server](https://github.com/indeedeng/iwf).
 
-Long is really keen to get feedback so please take a look at iWF, try them out and presented him any feedback.
+Long is really keen to get feedback so please take a look at iWF, try it out and present him with any feedback.
 Long has also created a couple of blog posts about iWF that we have featured in the Cadence in the News section below so please take a look.
 
 ## Cadence in the News!
@@ -39,6 +49,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 No upcoming events at the moment.
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

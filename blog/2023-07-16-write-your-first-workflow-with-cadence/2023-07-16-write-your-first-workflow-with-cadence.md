@@ -1,6 +1,16 @@
 ---
 title: Write your first workflow with Cadence
 
+description: A step-by-step tutorial for writing your first HelloWorld workflow and activity with Cadence in Go, including registering, running, and starting the workflow.
+keywords:
+  - cadence hello world
+  - first cadence workflow
+  - cadence go tutorial
+  - cadence workflow example
+  - cadence activity example
+  - cadence getting started
+  - write cadence workflow
+
 date: 2023-07-16
 authors: chopincode
 tags:
@@ -8,7 +18,7 @@ tags:
   - introduction-to-cadence
 ---
 
-We have covered [basic components of Cadence](/blog/2023-06-28-components-of-cadence-application-setup.md) and [how to implement a Cadence worker on local environment](/blog/2023-07-05-implement-cadence-worker-from-scratch.md) in previous blogs. In this blog, let's write your very first HelloWorld workflow with Cadence. I've started the Cadence backend server in background and registered a domain named `test-domain`. You may use the code snippet for the worker service in [this blog](/blog/2023-07-05-implement-cadence-worker-from-scratch.md)  Let's first write a activity, which takes a single string argument and print a log in the console.
+We have covered [basic components of Cadence](/blog/2023-06-28-components-of-cadence-application-setup.md) and [how to implement a Cadence worker on local environment](/blog/2023-07-05-implement-cadence-worker-from-scratch.md) in previous blogs. In this blog, let's write your very first HelloWorld workflow with Cadence. I've started the Cadence backend server in background and registered a domain named `test-domain`. You may use the code snippet for the worker service in [this blog](/blog/2023-07-05-implement-cadence-worker-from-scratch.md). Let's first write an activity, which takes a single string argument and prints a log in the console.
 
 ```go
 func helloWorldActivity(ctx context.Context, name string) (string, error) {

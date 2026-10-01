@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - December 2022
 
+description: The December 2022 Cadence Community Spotlight wraps up a busy year for the project, shares year-end community highlights including iWF and TLS connection examples, and looks ahead to 2023.
+keywords:
+  - cadence community spotlight
+  - cadence december 2022
+  - cadence community update
+  - cadence year in review
+  - cadence iwf
+  - cadence tls
+  - cadence child workflow
+  - cadence 2023
 date: 2022-12-23
 authors: sharanf
 tags:
@@ -33,6 +43,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Cadence Technical Office Hours - 30th January 2023 @ 9am PT](https://calendar.google.com/calendar/u/0/embed?src=e6r40gp3c2r01054id7e99dlac@group.calendar.google.com&ctz=America/Los_Angeles)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

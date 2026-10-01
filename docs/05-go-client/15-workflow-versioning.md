@@ -1,15 +1,33 @@
 ---
 layout: default
 title: Versioning
+description: This page explains how to safely make changes to Cadence workflow definitions using GetVersion to maintain backward compatibility with existing workflow executions and avoid non-deterministic errors.
+keywords:
+  - cadence workflow versioning
+  - workflow.GetVersion
+  - workflow code changes
+  - backward compatibility
+  - non-deterministic workflow
+  - safe deployment
+  - ExecuteWithMinVersion
+  - ExecuteWithVersion
+  - go client versioning
+  - cadence go workflow versioning tutorial
 permalink: /docs/go-client/workflow-versioning
 ---
-
-# Versioning
 
 The definition code of a Cadence :workflow: must be deterministic because Cadence uses :event: sourcing
 to reconstruct the :workflow: state by replaying the saved history :event: data on the :workflow:
 definition code. This means that any incompatible update to the :workflow: definition code could cause
 a non-deterministic issue if not handled correctly.
+
+## Samples
+
+Runnable versioning sample:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Workflow versioning** | Workflow evolved safely across versions with `workflow.GetVersion` | [versioning](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/versioning) |
 
 ## workflow.GetVersion()
 

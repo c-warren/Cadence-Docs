@@ -1,6 +1,17 @@
 ---
 title: Cadence Joins CNCF (Cloud Native Computing Foundation)
 
+description: Cadence has officially joined the Cloud Native Computing Foundation (CNCF) as a sandbox project, marking a major open-source milestone and opening new paths for community governance and contribution.
+keywords:
+  - cadence CNCF
+  - cadence cloud native computing foundation
+  - cadence open source
+  - cadence linux foundation
+  - cadence sandbox project
+  - cadence governance
+  - cadence maintainer
+  - cadence community
+
 date: 2025-10-06
 authors: enderdemirkaya
 tags:
@@ -13,6 +24,8 @@ tags:
 
 We’re proud to announce that [the Cadence project](https://cadenceworkflow.io/) has joined the [CNCF (Cloud Native Computing Foundation)](https://www.cncf.io/)®, the open-source foundation that hosts and maintains critical components of modern cloud-native infrastructure including Kubernetes®, Prometheus®, and Envoy® under the [Linux Foundation](https://www.linuxfoundation.org/)®.
 
+<!-- truncate -->
+
 Cadence is an open-source, fault-tolerant, and highly scalable workflow orchestration engine created at Uber to help developers build and run resilient applications. It’s been powering thousands of use cases at Uber and other companies. By managing distributed state, retries, scaling, and failure recovery, Cadence enables teams to focus on business logic rather than infrastructure complexity. Mission-critical applications across industries including finance, e-commerce, healthcare, and transportation depend on Cadence.
 
 Joining CNCF marks a significant milestone for the Cadence project, emphasizing the project’s open source commitment. With its [open governance](https://cadenceworkflow.io/community/governance), companies can join as maintainers and help improve long-term confidence. Increased transparency in roadmap and execution make upcoming features predictable.
@@ -23,7 +36,7 @@ In the last several years, Cadence has made significant investments in its scala
 
 ## What’s Changing in the Community?
 
-We’ll stop using our Slack workspace ([uber-cadence.slack.com](http://uber-cadence.slack.com)). Going forward, we’ll use CNCF’s Slack workspace ([cloud-native.slack.com](https://cloud-native.slack.com/)). Join this new workspace using [Community Inviter](https://communityinviter.com/apps/cloud-native/cncf) and join the *\#cadence-users* channel to contact us. 
+We’ll stop using our Slack workspace ([uber-cadence.slack.com](http://uber-cadence.slack.com)). Going forward, we’ll use CNCF’s Slack workspace ([cloud-native.slack.com](https://cloud-native.slack.com/)). Join this new workspace using [Community Inviter](https://inviter.co/cncf) and join the *\#cadence-users* channel to contact us. 
 
 Our website ([cadenceworkflow.io](http://cadenceworkflow.io)) and our GitHub org ([github.com/cadence-workflow](http://github.com/cadence-workflow)) will stay the same and we’ll continue sharing new features from there. 
 

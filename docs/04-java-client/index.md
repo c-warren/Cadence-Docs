@@ -1,11 +1,17 @@
 ---
 layout: default
 title: Introduction
+description: This page introduces the Cadence Java client, with links to the client repository, sample code, JavaDoc, and instructions for adding the dependency to Maven or Gradle projects.
+keywords:
+  - cadence java client introduction
+  - cadence java sdk setup
+  - cadence java dependency maven
+  - cadence java gradle
+  - cadence java client getting started
+  - cadence java repository
+  - com.uber.cadence cadence-client
 permalink: /docs/java-client
 ---
-
-# Java client ![Java Client Release](https://img.shields.io/github/v/release/cadence-workflow/cadence-java-client?sort=semver&display_name=tag&label=Latest%20Release&link=https%3A%2F%2Fgithub.com%2Fuber%2Fcadence-java-client%2Freleases%2Flatest)
-
 
 The following are important links for the Cadence Java client:
 

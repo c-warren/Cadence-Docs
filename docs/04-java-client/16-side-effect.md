@@ -1,12 +1,20 @@
 ---
 layout: default
 title: Side Effect
+description: This page explains how to use Workflow.sideEffect in Cadence Java workflows to safely execute non-deterministic code and record the result in workflow history for deterministic replay.
+keywords:
+  - cadence side effect java
+  - Workflow.sideEffect java
+  - cadence non-deterministic code java
+  - cadence workflow determinism
+  - cadence random number workflow
+  - cadence sideEffect replay
+  - cadence java side effect example
+  - cadence java side effect tutorial
 permalink: /docs/java-client/side-effect
 ---
 
-# Side Effect
-
-Side Effect allow workflow executes the provided function once, records its result into the workflow history.
+Side Effect allows a workflow to execute the provided function once and record its result into the workflow history.
 The recorded result on history will be returned without executing the provided function during replay. This
 guarantees the deterministic requirement for workflow as the exact same result will be returned
 in replay. Common use case is to run some short non-deterministic code in workflow, like
@@ -14,8 +22,18 @@ getting random number. The only way to fail SideEffect is to panic which causes 
 failure. The decision task after timeout is rescheduled and re-executed giving SideEffect
 another chance to succeed.
 
-!!Caution: do not use sideEffect function to modify any workflow state. Only use the
-SideEffect's return value. For example this code is BROKEN:
+## Samples
+
+Runnable side effect sample:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Side effect** | Workflow that records a non-deterministic value with `sideEffect` | [HelloSideEffect.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloSideEffect.java) |
+
+:::caution 
+Do not use sideEffect function to modify any workflow state. Only use the
+SideEffect's return value. 
+:::
 
 Bad example:
 ```java
@@ -35,9 +53,7 @@ Bad example:
 On replay the provided function is not executed, the random will always be 0, and the workflow
 could takes a different path breaking the determinism.
 
-Here is the correct way to use sideEffect:
-
-Good example:
+Corrected example:
 ```java
  int random = Workflow.sideEffect(Integer.class, () -> random.nextInt(100));
  if random < 50 {
@@ -48,7 +64,7 @@ Good example:
 ```
 
 If function throws any exception it is not delivered to the workflow code. It is wrapped in
-an Error causing failure of the current decision.
+an Error causing failure on the current decision.
 
 ## Mutable Side Effect
 
@@ -65,8 +81,10 @@ One good use case of mutableSideEffect is to access a dynamically changing confi
 without breaking determinism. Even if called very frequently the config value is recorded only
 when it changes not causing any performance degradation due to a large history size.
 
-!!Caution: do not use mutableSideEffect function to modify any workflow sate. Only use
+:::caution
+Do not use mutableSideEffect function to modify any workflow state. Only use
 the mutableSideEffect's return value.
 
 If function throws any exception it is not delivered to the workflow code. It is wrapped in
 an Error causing failure of the current decision.
+:::

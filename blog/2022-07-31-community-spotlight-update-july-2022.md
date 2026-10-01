@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - July 2022
 
+description: Monthly Cadence community update for July 2022, featuring a drone delivery use case demo built with Cadence, GitHub activity statistics, and an upcoming roadmap announcement.
+keywords:
+  - cadence community spotlight
+  - cadence july 2022
+  - cadence community update
+  - cadence drone delivery
+  - cadence use case
+  - cadence github
+  - cadence roadmap
+  - cadence kafka
 date: 2022-07-31
 authors: sharanf
 tags:
@@ -46,6 +56,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Webinar: Building Your First Cadence Workflow with Java and Go - 1st September 2022](https://info.instaclustr.com/webinar-emea-building-cadence-workflow.html)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

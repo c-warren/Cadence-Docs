@@ -1,10 +1,20 @@
 ---
 layout: default
 title: Distributed CRON
+description: This page explains how to schedule Cadence workflows to run on a cron schedule using CronSchedule in StartWorkflowOptions, including how to retrieve results from the last successful run.
+keywords:
+  - cadence cron
+  - distributed cron
+  - CronSchedule
+  - scheduled workflow
+  - periodic workflow
+  - cron expression
+  - HasLastCompletionResult
+  - GetLastCompletionResult
+  - go client cron
+  - cadence go distributed cron tutorial
 permalink: /docs/go-client/distributed-cron
 ---
-
-# Distributed CRON
 
 It is relatively straightforward to turn any Cadence :workflow: into a Cron :workflow:. All you need
 is to supply a cron schedule when starting the :workflow: using the CronSchedule
@@ -12,6 +22,17 @@ parameter of
 [StartWorkflowOptions](https://godoc.org/go.uber.org/cadence/internal#StartWorkflowOptions).
 
 You can also start a :workflow: using the Cadence :CLI: with an optional cron schedule using the `--cron` argument.
+
+## Samples
+
+Runnable cron samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Distributed cron** | Recurring workflow driven by the CronSchedule start option | [cron](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/cron) |
+| **Schedules** | Schedule operations, the recommended successor to cron for new use cases | [schedule](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/schedule) |
+
+---
 
 For :workflow:workflows: with CronSchedule:
 

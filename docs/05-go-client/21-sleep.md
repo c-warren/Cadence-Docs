@@ -1,16 +1,32 @@
 ---
 layout: default
 title: Sleep
+description: This page explains how to use workflow.Sleep in Cadence to pause a workflow for a durable, deterministic duration that survives worker restarts without consuming worker resources.
+keywords:
+  - cadence sleep
+  - workflow.Sleep
+  - durable sleep
+  - workflow timer
+  - pause workflow
+  - workflow delay
+  - go client sleep
+  - cadence go sleep tutorial
 permalink: /docs/go-client/sleep
 ---
 
-# Workflow Sleep
+The `workflow.Sleep` function allows a Cadence workflow to pause its execution for a specified duration. This is similar to `time.Sleep` in Go, but is safe and deterministic for use within Cadence workflows. The workflow will be paused and resumed by the Cadence service, and the sleep is durable, meaning the workflow can survive worker restarts or failures during the sleep period.
 
-The `workflow.Sleep` function allows a Cadence workflow to pause its execution for a specified duration. This is similar to `time.Sleep` in Go, but is safe and deterministic for use within Cadence workflows. The workflow will be paused and resumed by the Cadence service, and the sleep is durable—meaning the workflow can survive worker restarts or failures during the sleep period.
+## Samples
+
+Runnable sleep sample:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Durable sleep** | Workflow that sleeps durably and survives worker restarts | [sleep](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/sleep) |
 
 ## Example: Sleep for 30 Seconds
 
-Here is a minimal example of using `workflow.Sleep` in a Cadence workflow, as demonstrated in [cadence-samples PR #99](https://github.com/cadence-workflow/cadence-samples/pull/99):
+Here is a minimal example of using `workflow.Sleep` in a Cadence workflow, taken from the [sleep sample](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/sleep):
 
 ```go
 import (

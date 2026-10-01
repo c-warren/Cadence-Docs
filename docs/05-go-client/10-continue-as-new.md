@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Continue as new
+description: This page explains how to use ContinueAsNew in Cadence to restart a workflow with a fresh history, preventing event history from growing too large in long-running periodic workflows.
+keywords:
+  - cadence continue as new
+  - ContinueAsNew
+  - workflow history limit
+  - periodic workflow
+  - long running workflow
+  - ContinueAsNewError
+  - go client
+  - cadence go continue as new tutorial
 permalink: /docs/go-client/continue-as-new
 ---
-
-# Continue as new
 
 :workflow:Workflows: that need to rerun periodically could naively be implemented as a big **for** loop with
 a sleep where the entire logic of the :workflow: is inside the body of the **for** loop. The problem
@@ -23,3 +31,12 @@ func SimpleWorkflow(workflow.Context ctx, value string) error {
     return workflow.NewContinueAsNewError(ctx, SimpleWorkflow, value)
 }
 ```
+
+## Samples
+
+Samples that use continue-as-new:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Child workflow loop** | Child workflow that runs its iterations through continue-as-new | [childworkflow](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/childworkflow) |
+| **Long optimization loop** | Particle swarm optimization that resets history between iterations | [pso](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/pso) |

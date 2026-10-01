@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Activity overview
+description: This page explains how to define and implement Cadence activity functions in Go, including parameter requirements, context usage, return values, and execution history considerations.
+keywords:
+  - cadence activity go
+  - cadence go activity implementation
+  - cadence golang activity
+  - cadence activity function go
+  - cadence go sdk activity
+  - cadence activity context go
+  - cadence activity example go
+  - cadence go activities tutorial
 permalink: /docs/go-client/activities
 ---
-
-# Activity overview
 
 An :activity: is the implementation of a particular :task: in the business logic.
 
@@ -23,6 +31,15 @@ history can thus adversely impact the performance of your :workflow:. Therefore,
 of data you transfer via :activity: invocation parameters or return values. Otherwise, no additional
 limitations exist on :activity: implementations.
 
+## Samples
+
+Runnable activity samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Basic activities** | Activity implementations invoked from a workflow | [activities](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/activities) |
+| **Local activity** | Short activity executed directly on the workflow worker | [localactivity](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/localactivity) |
+
 ## Overview
 
 The following example demonstrates a simple :activity: that accepts a string parameter, appends a word
@@ -38,10 +55,6 @@ import (
     "go.uber.org/zap"
 )
 
-func init() {
-    activity.Register(SimpleActivity)
-}
-
 // SimpleActivity is a sample Cadence activity function that takes one parameter and
 // returns a string containing the parameter value.
 func SimpleActivity(ctx context.Context, value string) (string, error) {
@@ -53,7 +66,7 @@ Let's take a look at each component of this activity.
 
 ### Declaration
 
-In the Cadence programing model, an :activity: is implemented with a function. The function declaration specifies the parameters the :activity: accepts as well as any values it might return. An :activity: function can take zero or many :activity: specific parameters and can return one or two values. It must always at least return an error value. The :activity: function can accept as parameters and return as results any serializable type.
+In the Cadence programming model, an :activity: is implemented with a function. The function declaration specifies the parameters the :activity: accepts as well as any values it might return. An :activity: function can take zero or many :activity: specific parameters and can return one or two values. It must always at least return an error value. The :activity: function can accept as parameters and return as results any serializable type.
 
 `func SimpleActivity(ctx context.Context, value string) (string, error)`
 
@@ -123,15 +136,15 @@ that call `RecordActivityHeartbeat`.
 
 ### Registration
 
-To make the :activity: visible to the :worker: process hosting it, the :activity: must be registered via a
-call to `activity.Register`.
+To make the :activity: visible to the :worker: process hosting it, register the implementation on the Worker instance:
 
 ```go
-func init() {
-    activity.Register(SimpleActivity)
-}
+w.RegisterActivity(SimpleActivity)
 ```
-This call creates an in-memory mapping inside the :worker: process between the fully qualified function
+
+The global `activity.Register` and `activity.RegisterWithOptions` functions are deprecated. Registering on the Worker keeps the implementations associated with that worker.
+
+Registration creates an in-memory mapping inside the :worker: process between the fully qualified function
 name and the implementation. If a :worker: receives a request to start an :activity: execution for an
 :activity: type it does not know, it will fail that request.
 

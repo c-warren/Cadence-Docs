@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Implementing workflows
+description: This page explains how to implement a Cadence workflow in Java, including calling activities, using timers, handling signals, and managing workflow state.
+keywords:
+  - cadence java workflow implementation
+  - implementing workflow java
+  - cadence activity stub java
+  - java workflow execution
+  - cadence workflow code java
+  - newActivityStub java
+  - cadence java workflow example
+  - cadence java implementing workflows tutorial
 permalink: /docs/java-client/implementing-workflows
 ---
-
-# Implementing workflows
 
 A :workflow: implementation implements a :workflow: interface. Each time a new :workflow_execution: is started,
 a new instance of the :workflow: implementation object is created. Then, one of the methods
@@ -12,6 +20,16 @@ a new instance of the :workflow: implementation object is created. Then, one of 
 returns, the :workflow_execution: is closed. While :workflow_execution: is open, it can receive calls to :signal: and :query: methods.
 No additional calls to :workflow: methods are allowed. The :workflow: object is stateful, so :query: and :signal: methods
 can communicate with the other parts of the :workflow: through :workflow: object fields.
+
+## Samples
+
+Runnable workflow implementation samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Basic workflow** | Workflow implementation that calls a single activity | [HelloActivity.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloActivity.java) |
+| **Async activity calls** | Calls activities asynchronously with `Async.function` and `Promise` | [HelloAsync.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloAsync.java) |
+| **Async lambda** | Runs part of the workflow logic asynchronously in a lambda | [HelloAsyncLambda.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloAsyncLambda.java) |
 
 ## Calling Activities
 
@@ -143,7 +161,7 @@ Cadence uses the [Microsoft Azure Event Sourcing pattern](https://docs.microsoft
 the state of a :workflow: object including its threads and local variable values.
 In essence, every time a :workflow: state has to be restored, its code is re-executed from the beginning. When replaying, side
 effects (such as :activity: invocations) are ignored because they are already recorded in the :workflow: :event_history:.
-When writing :workflow: logic, the replay is not visible, so the code should be written since it executes only once.
+When writing :workflow: logic, the replay is not visible, so the code should be written as if it executes only once.
 This design puts the following constraints on the :workflow: implementation:
 
 - Do not use any mutable global variables because multiple instances of :workflow:workflows: are executed in parallel.
@@ -166,7 +184,7 @@ might break already open :workflow:workflows:.
 Pass it as an argument to a :workflow: function or use an :activity: to load it.
 
 :workflow:Workflow: method arguments and return values are serializable to a byte array using the provided
-[DataConverter](https://static.javadoc.io/com.uber.cadence/cadence-client/2.4.1/index.html?com/cadence-workflow/cadence/converter/DataConverter.html)
+[DataConverter](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/converter/DataConverter.html)
 interface. The default implementation uses JSON serializer, but you can use any alternative serialization mechanism.
 
 The values passed to :workflow:workflows: through invocation parameters or returned through a result value are recorded in the execution history.

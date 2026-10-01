@@ -1,12 +1,30 @@
 ---
 layout: default
 title: Periodic execution
+description: This page describes how Cadence supports periodic execution use cases, including distributed cron jobs at massive scale with guaranteed execution, retries, and full visibility.
+keywords:
+  - cadence periodic execution
+  - cadence cron job
+  - distributed cron
+  - cadence scheduled workflow
+  - cadence recurring workflow
+  - cadence cron use case
+  - cadence periodic execution tutorial
 permalink: /docs/use-cases/periodic-execution
 ---
 
-# Periodic execution (aka Distributed Cron)
-
 Periodic execution, frequently referred to as distributed cron, is when you execute business logic periodically. The advantage of Cadence for these scenarios is that it guarantees execution, sophisticated error handling, retry policies, and visibility into execution history.
+
+## Samples
+
+Runnable periodic-execution samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Schedules** | Create, pause, update, and backfill a schedule as a server-side object, independent of the workflow | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/schedule) · [Python](https://github.com/cadence-workflow/cadence-samples/tree/master/python_sdk_samples/schedule_samples) |
+| **Distributed Cron** | Recurring workflow driven by a `CronSchedule` cron expression on the start options | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/cron) · [Java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloCron.java) |
+
+---
 
 Another important dimension is scale. Some use cases require periodic execution for a large number of entities.
 At Uber, there are applications that create periodic :workflow:workflows: per customer.
@@ -16,5 +34,13 @@ Periodic execution is often part of other use cases. For example, once a month r
 
 There are many real-world examples of Cadence periodic executions. Such as the following:
 
- * An Uber backend service that recalculates various statistics for each [hex](https://eng.uber.com/h3/) in each city once a minute.
+ * An Uber backend service that recalculates various statistics for each [hex](https://www.uber.com/blog/h3/) in each city once a minute.
  * Monthly Uber for Business report generation.
+
+## How to implement periodic execution in Cadence
+
+Cadence offers two approaches:
+
+**[Schedules](/docs/concepts/schedules)** — the recommended approach for new code. A Schedule is a first-class server-side object that you create, pause, update, and backfill independently of your workflow. It supports overlap policies, catch-up windows, and full observability without modifying your workflow code. Use the `ScheduleClient` in the Go SDK to manage schedules programmatically.
+
+**[Distributed Cron](/docs/go-client/distributed-cron)** — the older approach using `CronSchedule` on `StartWorkflowOptions`. Simpler to set up but less flexible: you cannot pause, update, or backfill a cron workflow without restarting it, and overlap is always skip-new.

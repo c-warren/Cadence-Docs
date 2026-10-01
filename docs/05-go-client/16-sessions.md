@@ -1,12 +1,30 @@
 ---
 layout: default
 title: Sessions
+description: This page explains how to use the Cadence session framework to schedule multiple activities on the same worker, with support for concurrent session limits, worker failure detection, and session recreation.
+keywords:
+  - cadence sessions
+  - session framework
+  - CreateSession
+  - CompleteSession
+  - worker session
+  - activity affinity
+  - concurrent session limit
+  - file processing workflow
+  - go client sessions
+  - cadence go sessions tutorial
 permalink: /docs/go-client/sessions
 ---
 
-# Sessions
-
 The session framework provides a straightforward interface for scheduling multiple :activity:activities: on a single :worker: without requiring you to manually specify the :task_list: name. It also includes features like **concurrent session limitation** and **worker failure detection**.
+
+## Samples
+
+Runnable session sample:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **File processing** | Session used to run download, process, and upload steps on the same worker | [fileprocessing](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/fileprocessing) |
 
 ## Use Cases
 

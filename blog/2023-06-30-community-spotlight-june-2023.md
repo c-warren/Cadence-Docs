@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - June 2023
 
+description: Monthly Cadence community update for June 2023, celebrating the Cadence v1.0 release, sharing community survey results, and highlighting a talk at the Linux Foundation Open Source Summit.
+keywords:
+  - cadence community spotlight
+  - cadence june 2023
+  - cadence community update
+  - cadence v1.0 release
+  - cadence 1.0
+  - cadence open source summit
+  - cadence survey results
+  - cadence workflow versioning
 date: 2023-06-30
 authors: sharanf
 tags:
@@ -66,6 +76,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - None
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

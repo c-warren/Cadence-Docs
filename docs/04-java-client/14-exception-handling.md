@@ -1,17 +1,36 @@
 ---
 layout: default
 title: Exception Handling
+description: This page explains how exceptions are propagated in Cadence Java workflows, including how activity and child workflow failures are wrapped and how to handle them in parent workflows.
+keywords:
+  - cadence exception handling java
+  - cadence activity failure java
+  - ActivityFailureException java
+  - ChildWorkflowFailureException java
+  - WorkflowFailureException java
+  - cadence error handling java
+  - cadence java exception example
+  - cadence java exception handling tutorial
 permalink: /docs/java-client/exception-handling
 ---
 
-# Exception Handling
-
-By default, Exceptions thrown by an activity are received by the workflow wrapped into an `com.uber.cadence.workflow.ActivityFailureException`,
+By default, Exceptions thrown by an activity are received by the workflow wrapped into a `com.uber.cadence.workflow.ActivityFailureException`.
 
 Exceptions thrown by a child workflow are received by a parent workflow wrapped into a `com.uber.cadence.workflow.ChildWorkflowFailureException`
 
 Exceptions thrown by a workflow are received by a workflow client wrapped into `com.uber.cadence.client.WorkflowFailureException`.
 
+## Samples
+
+Runnable exception handling samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Exception propagation** | Exception travels from activity through child workflow to the client | [HelloException.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloException.java) |
+| **Cancellation handling** | Workflow that runs cleanup when it is cancelled | [HelloCancellation.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloCancellation.java) |
+| **Compensation on failure** | Saga that runs compensations when a step fails | [bookingsaga](https://github.com/cadence-workflow/cadence-java-samples/tree/master/src/main/java/com/uber/cadence/samples/bookingsaga) |
+
+---
 
  In this [example](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloException.java) a Workflow Client executes a workflow which executes a child workflow which
  executes an activity which throws an IOException. The resulting exception stack trace is:
@@ -122,6 +141,7 @@ public class HelloException {
      // Get a new client
      // NOTE: to set a different options, you can do like this:
      // ClientOptions.newBuilder().setRpcTimeout(5 * 1000).build();
+     // WorkflowServiceTChannel is 3.x only. Java 4.x uses WorkflowServiceGrpc.
      WorkflowClient workflowClient =
          WorkflowClient.newInstance(
              new WorkflowServiceTChannel(ClientOptions.defaultInstance()),

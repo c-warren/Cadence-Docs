@@ -1,10 +1,17 @@
 ---
 layout: default
 title: HTTP API
+description: This page explains how to enable and use the Cadence HTTP API to interact with the Cadence server using HTTP/JSON, available from version 1.2.0 onwards.
+keywords:
+  - cadence http api
+  - cadence rest api
+  - http json cadence
+  - cadence api setup
+  - cadence rpc http
+  - start workflow http
+  - cadence server http
 permalink: /docs/concepts/http-api
 ---
-
-# Using HTTP API
 
 ## Introduction
 
@@ -1879,7 +1886,7 @@ HTTP code: 200
 <details>
 <summary><code>POST</code> <code><b>uber.cadence.api.v1.WorkflowAPI::SignalWithStartWorkflowExecution</b></code></summary>
 
-#### Signal the current open workflow if exists, or attempt to start a new run based on IDResuePolicy and signals it
+#### Signal the current open workflow if one exists, or attempt to start a new run based on IDReusePolicy and signal it
 
 ##### Headers
 

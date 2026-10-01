@@ -1,10 +1,19 @@
 ---
 layout: default
 title: Introduction
+description: This page introduces the Cadence CLI, covering installation via Homebrew or Docker, and provides examples of domain and workflow operations including starting, signaling, querying, and resetting workflows.
+keywords:
+  - cadence cli
+  - cadence command line
+  - cadence workflow commands
+  - cadence domain commands
+  - cadence CLI tutorial
+  - workflow signal cli
+  - workflow query cli
+  - workflow reset cli
+  - cadence CLI docker
 permalink: /docs/cli
 ---
-
-# Command Line Interface
 
 The Cadence :CLI: is a command-line tool you can use to perform various :task:tasks: on a Cadence server. It can perform
 :domain: operations such as register, update, and describe as well as :workflow: operations like start
@@ -21,7 +30,7 @@ After the installation is done, you can use CLI:
 ```bash
 cadence --help
 ```
-This will always install the latest version. Follow [this instructions](https://github.com/cadence-workflow/cadence/discussions/4457) if you need to install older versions of Cadence CLI.
+This will always install the latest version. Follow [these instructions](https://github.com/cadence-workflow/cadence/discussions/4457) if you need to install older versions of Cadence CLI.
 
 ### Docker
 The Cadence :CLI: can be used directly from the Docker Hub image *ubercadence/cli* or by building the :CLI: tool
@@ -182,13 +191,16 @@ Run `cadence tasklist` for help on tasklist operations
 **Note:** make sure you have a Cadence server running before using :CLI:
 
 ### Domain operation examples
+
+For field-level references, see the released server's [domain command flags](https://github.com/cadence-workflow/cadence/blob/v1.4.1/tools/cli/domain_utils.go) and the IDL definitions for [`RegisterDomainRequest` and `UpdateDomainRequest`](https://github.com/cadence-workflow/cadence-idl/blob/master/proto/uber/cadence/api/v1/service_domain.proto).
+
 - Register a new :domain: named "samples-domain":
 ```bash
 cadence --domain samples-domain domain register
 # OR using short alias
 cadence --do samples-domain d re
 ```
-If your Cadence cluster has enable [global domain(XDC replication)](https://cadenceworkflow.io/docs/concepts/cross-dc-replication/), then you have to specify the replicaiton settings when registering a domain:
+If your Cadence cluster has enabled [global domain (XDC replication)](/docs/concepts/cross-dc-replication), then you have to specify the replication settings when registering a domain:
 ```bash
 cadence --domains samples-domain domain register --active_cluster clusterNameA --clusters clusterNameA,clusterNameB
 ```
@@ -216,7 +228,7 @@ To run a :workflow:, the user must specify the following:
 3. Execution start to close timeout in seconds (--et)
 4. Input in JSON format (--i) (optional)
 
-s example uses [this cadence-samples workflow](https://github.com/cadence-workflow/cadence-samples/blob/master/cmd/samples/recipes/helloworld/helloworld_workflow.go)
+This example uses [this cadence-samples workflow](https://github.com/cadence-workflow/cadence-samples/blob/master/cmd/samples/recipes/helloworld/helloworld_workflow.go)
 and takes a string as input with the `-i '"cadence"'` parameter. Single quotes (`''`) are used to wrap input as JSON.
 
 **Note:** You need to start the :worker: so that the :workflow: can make progress.
@@ -328,8 +340,13 @@ Terminating a running :workflow_execution: will record a WorkflowExecutionTermin
 Canceling a running :workflow_execution: will record a WorkflowExecutionCancelRequested :event: in the history, and a new :decision_task: will be scheduled. The :workflow: has a chance to do some clean up work after cancellation.
 
 #### Signal, cancel, terminate workflows as a batch job
+
+:::tip New: Batch Actions UI
+You can now run and manage batch jobs directly from Cadence Web, no CLI required. See [Batch Actions UI: Manage Thousands of Workflows at Once](/blog/2026/07/07/2026-07-07-batch-actions-ui/batch-actions-ui) to learn more.
+:::
+
 Batch job is based on List Workflow Query(**--query**). It supports :signal:, cancel and terminate as batch job type.
-For terminating :workflow:workflows: as batch job, it will terminte the children recursively.
+For terminating :workflow:workflows: as batch job, it will terminate the children recursively.
 
 Start a batch job(using :signal: as batch type):
 ```bash
@@ -365,7 +382,7 @@ There are a lot of use cases:
 - Rerun a failed :workflow: from the failing point without losing the achieved progress(history).
 - After deploying new code, reset an open :workflow: to let the :workflow: run to different flows.
 
-What this command allows you to do conceptually is to go back to an earlier point in the workflow's history and re-run from that point. It allows you to pick the beginning of the workflow's history, the most recent events (the end) or in (most) segements of the workflow's history. 
+What this command allows you to do conceptually is to go back to an earlier point in the workflow's history and re-run from that point. It allows you to pick the beginning of the workflow's history, the most recent events (the end) or in (most) segments of the workflow's history. 
 
 You can reset to some predefined :event: types:
 ```bash

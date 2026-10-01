@@ -1,17 +1,41 @@
 ---
 layout: default
 title: Starting workflows
+description: This page explains how to create a WorkflowClient and start workflow executions in Java using TChannel or gRPC, including TLS-enabled client configuration.
+keywords:
+  - cadence start workflow java
+  - WorkflowClient java
+  - cadence java workflow execution
+  - start workflow execution java
+  - cadence grpc java
+  - cadence tchannel java
+  - cadence java client setup
+  - cadence java start workflow tutorial
 permalink: /docs/java-client/starting-workflow-executions
 ---
-
-# Starting workflow executions
 
 ## Creating a WorkflowClient
 
 A :workflow: interface that executes a :workflow: requires initializing a `WorkflowClient` instance, creating
 a client side stub to the :workflow:, and then calling a method annotated with @WorkflowMethod.
 
-A simple `WorkflowClient` instance that utilises the :tchannel: communication protocol can be initialised as follows:
+## Samples
+
+Runnable samples for starting workflows from client code:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Start a workflow** | Creates a `WorkflowClient` and starts a workflow execution | [HelloWorldSample.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/clientsamples/HelloWorldSample.java) |
+| **Start and signal** | Starts a workflow and sends it a signal from the client | [SignalSample.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/clientsamples/SignalSample.java) |
+| **Standalone starter** | Separate starter program for the calculation workflow | [WorkflowStarter.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/calculation/WorkflowStarter.java) |
+
+---
+
+A simple `WorkflowClient` instance that utilizes the :tchannel: communication protocol can be initialized as follows:
+
+:::note
+`WorkflowServiceTChannel` applies to the 3.x Java client. The 4.x client removed TChannel and Thrift; use `WorkflowServiceGrpc` instead. Java 3.x supports both transports. The `Thrift2ProtoAdapter` gRPC example later on this page is also a 3.x construction.
+:::
 
 ```java
 WorkflowClient workflowClient =

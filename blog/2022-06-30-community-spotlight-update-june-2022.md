@@ -1,6 +1,15 @@
 ---
 title: Cadence Community Spotlight Update - June 2022
 
+description: Monthly Cadence community update for June 2022, covering Slack support activity, improvements to office hours, stability improvements, German-language blog posts, and upcoming events.
+keywords:
+  - cadence community spotlight
+  - cadence june 2022
+  - cadence community update
+  - cadence stability
+  - cadence office hours
+  - cadence blog
+  - cadence support
 date: 2022-06-30
 authors: sharanf
 tags:
@@ -27,7 +36,7 @@ If you have any ideas or comments about how we can improve our community office 
 
 ## Cadence Stability Improvements
 
-Is Cadence getting better? Yes it is! Many of you may have noticed that Cadence is improving.That is because of the amount of work being done behind the scenes. The Cadence core team has been doing a lot of work to stabilise Cadence functionality. Keep watching out for even more improvements!
+Is Cadence getting better? Yes it is! Many of you may have noticed that Cadence is improving. That is because of the amount of work being done behind the scenes. The Cadence core team has been doing a lot of work to stabilise Cadence functionality. Keep watching out for even more improvements!
 
 ## Sprechen Sie Deutsch?
 
@@ -50,6 +59,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Webinar: Building Your First Cadence Workflow with Java and Go - 19th July 2022](https://info.instaclustr.com/webinar-building-cadence-workflow)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

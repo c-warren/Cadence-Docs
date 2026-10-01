@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Implementing activities
+description: This page explains how to implement Cadence activity classes in Java, covering thread safety requirements, execution history considerations, and best practices for data transfer.
+keywords:
+  - cadence java activity implementation
+  - implementing activities java
+  - cadence thread safe activity
+  - cadence activity class java
+  - java activity execution history
+  - cadence activity best practices
+  - cadence java activity example
+  - cadence java implementing activities tutorial
 permalink: /docs/java-client/implementing-activities
 ---
-
-# Implementing activities
 
 :activity:Activity: implementation is an implementation of an :activity: interface. A single instance of the :activity:activities: implementation
 is shared across multiple simultaneous :activity: invocations. Therefore, the :activity: implementation code must be *thread safe*.
@@ -12,6 +20,18 @@ is shared across multiple simultaneous :activity: invocations. Therefore, the :a
 The values passed to :activity:activities: through invocation parameters or returned through a result value are recorded in the execution history.
 The entire execution history is transferred from the Cadence service to :workflow_worker:workflow_workers: when a :workflow: state needs to recover.
 A large execution history can thus adversely impact the performance of your :workflow:. Therefore, be mindful of the amount of data you transfer via :activity: invocation parameters or return values. Otherwise, no additional limitations exist on :activity: implementations.
+
+## Samples
+
+Runnable activity implementation samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Synchronous activity** | Regular activity implementation returning a result | [HelloActivity.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloActivity.java) |
+| **Async completion** | Activity completed later from a different process | [HelloAsyncActivityCompletion.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloAsyncActivityCompletion.java) |
+| **Local activity** | Short activity executed directly on the workflow worker | [HelloLocalActivity.java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloLocalActivity.java) |
+
+---
 
 ```java
 public class FileProcessingActivitiesImpl implements FileProcessingActivities {
@@ -44,7 +64,7 @@ public class FileProcessingActivitiesImpl implements FileProcessingActivities {
 
 ## Accessing Activity Info
 
-The [Activity](https://static.javadoc.io/com.uber.cadence/cadence-client/2.4.1/index.html?com/cadence-workflow/cadence/activity/Activity.html)
+The [Activity](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/activity/Activity.html)
 class provides static getters to access information about the :workflow: that invoked it. Note that this information is stored in a thread local variable. Therefore, calls to :activity:Activity: accessors succeed only in the thread that invoked the :activity: function.
 
 ```java
@@ -72,7 +92,7 @@ and later a reply comes and is picked up by a different :worker: process. The wh
 as a single Cadence :activity:.
 
 To indicate that an :activity: should not be completed upon its method return, call `Activity.doNotCompleteOnReturn()` from the
-original :activity: thread. Then later, when replies come, complete the :activity: using [ActivityCompletionClient](https://static.javadoc.io/com.uber.cadence/cadence-client/2.4.1/index.html?com/cadence-workflow/cadence/client/ActivityCompletionClient.html).
+original :activity: thread. Then later, when replies come, complete the :activity: using [ActivityCompletionClient](https://www.javadoc.io/doc/com.uber.cadence/cadence-client/latest/com/uber/cadence/client/ActivityCompletionClient.html).
 To correlate :activity: invocation with completion, use either `TaskToken` or :workflow: and :activity: IDs.
 
 ```java

@@ -1,6 +1,15 @@
 ---
 title: Cadence Community Spotlight Update - May 2022
 
+description: Monthly Cadence community update for May 2022, featuring the new Cadence polling cookbook, a first-time contributor celebration, and upcoming webinars and office hours.
+keywords:
+  - cadence community spotlight
+  - cadence may 2022
+  - cadence community update
+  - cadence polling cookbook
+  - cadence contributors
+  - cadence instaclustr
+  - cadence office hours
 date: 2022-05-31
 authors: sharanf
 tags:
@@ -29,7 +38,7 @@ We are always looking for ways to encourage project participation.  It doesn't m
 
 ## Share Your News!
 
-Our #support [Slack](http://t.uber.com/cadence-slack) channel is always full of questions and activity so we know that there are are lot of people out there exploring, trying out and setting up Cadence. We are always interested in hearing about what the community are doing so if you have something to you want to share as a blog post or part of this montly update then please contact us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Our #support [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel is always full of questions and activity so we know that there are are lot of people out there exploring, trying out and setting up Cadence. We are always interested in hearing about what the community are doing so if you have something you want to share as a blog post or part of this monthly update then please contact us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.
 
 ## Next Cadence Technical Office Hours: 3rd and  27th June 2022
 
@@ -57,6 +66,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 
 - [Webinar: Building Your First Cadence Workflow with Java and Go - 19th July 2022](https://info.instaclustr.com/webinar-building-cadence-workflow)
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

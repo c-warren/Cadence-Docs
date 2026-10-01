@@ -1,10 +1,24 @@
 ---
 layout: default
 title: Introduction
+description: Cadence is a durable execution engine that replaces ad-hoc combinations of queues, cron jobs, and databases. Explore the use cases where it fits best.
+keywords:
+  - cadence use cases
+  - cadence applications
+  - cadence workflow use cases
+  - what is cadence used for
+  - cadence distributed application
+  - cadence durable function
+  - cadence orchestration
+  - durable execution use cases
+  - workflow engine use cases
+  - when to use a workflow engine
 permalink: /docs/use-cases/
 ---
 
-# Use cases
+# Use Cases
+
+Cadence shines anywhere your business logic spans more than a single request-response cycle, including long-running processes, multi-step orchestration, retry-heavy integrations, or anything that today lives in a fragile combination of cron jobs, queues, and database polling. The durable execution model replaces that infrastructure with plain application code that Cadence keeps running reliably.
 
 As Cadence developers, we face a difficult non-technical problem: How to position and describe the Cadence platform.
 
@@ -14,7 +28,7 @@ We call it _orchestrator_. But this term is [pretty narrow](https://en.wikipedia
 
 We call it _durable function_ platform. It is technically a correct term. But most developers outside of the Microsoft ecosystem have never heard of [Durable Functions](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview).
 
-We believe that problem in naming comes from the fact that Cadence is indeed a **new way to write distributed applications**. It is generic enough that it can be applied to practically any use case that goes beyond a single request reply. It can be used to build applications that are in traditional areas of :workflow: or orchestration platforms. But it is also huge _developer productivity_ boost for multiple use cases that traditionally rely on databases and/or :task: queues.
+We believe that problem in naming comes from the fact that Cadence is indeed a **new way to write distributed applications**. It is generic enough that it can be applied to practically any use case that goes beyond a single request reply. It can be used to build applications that are in traditional areas of :workflow: or orchestration platforms. But it is also a huge _developer productivity_ boost for multiple use cases that traditionally rely on databases and/or :task: queues.
 
 This section represents a far from complete list of use cases where Cadence is a good fit. All of them have been used by real production services inside and outside of Uber.
 

@@ -1,11 +1,20 @@
 ---
 title: Introducing cadence-web v4.0.0
 
-description: We've released cadence-web v4.0.0, a complete rewrite of the Cadence Web UI with a modern UI and performance improvements! Learn more about the new features, technology stack, and how this update addresses past challenges for developers and users alike.
+description: cadence-web v4.0.0 is a complete rewrite of the Cadence Web UI using Next.js, TypeScript, and React, bringing multi-cluster support, a unified workflow history view, and significantly improved performance.
+keywords:
+  - cadence web v4
+  - cadence web rewrite
+  - cadence UI
+  - cadence web nextjs
+  - cadence web typescript
+  - cadence multi-cluster UI
+  - cadence workflow history view
+  - cadence web release
 
+date: 2025-04-11T16:00
 authors: adhityamamallan
 tags: [announcement]
-date: 2025-04-11T16:00
 ---
 
 We are excited to announce the release of **cadence-web v4.0.0**—a complete rewrite of the Cadence web app. Cadence has always been about empowering developers to manage complex workflows, and with this release, we not only modernize the web interface by embracing today’s cutting-edge technologies but also strengthen the open source community by aligning our tools with the broader trends seen across the industry.
@@ -67,6 +76,6 @@ Now that we have a robust and modernized Cadence UI, our long-term plan is to en
 * **Extended Domain Information:** We will be adding more information to the Domain page to help you work with your domains and quickly identify any issues affecting them.  
 * **Workflow Diagnostics UI:** Integrating with the new Workflow Diagnostics API to provide detailed insights into failed workflows.
 
-We invite you to explore cadence-web v4.0.0 and share your feedback with us. Please feel free to share your feedback with the new Cadence UI in our [Slack workspace](http://t.uber.com/cadence-slack)\! Your input is invaluable as we continue to evolve this platform.
+We invite you to explore cadence-web v4.0.0 and share your feedback with us. Please feel free to share your feedback with the new Cadence UI in our [Slack workspace](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)\! Your input is invaluable as we continue to evolve this platform.
 
 Happy coding, and thank you for being a part of the Cadence journey\!

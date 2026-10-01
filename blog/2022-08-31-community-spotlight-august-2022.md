@@ -1,6 +1,16 @@
 ---
 title: Cadence Community Spotlight Update - August 2022
 
+description: Monthly Cadence community update for August 2022, announcing the upcoming community survey, increased GitHub and Slack activity, the planned in-person meetup, and a Cadence engineering job opening at Uber.
+keywords:
+  - cadence community spotlight
+  - cadence august 2022
+  - cadence community update
+  - cadence community survey
+  - cadence meetup
+  - cadence github activity
+  - cadence jobs
+  - cadence contributors
 date: 2022-08-31
 authors: sharanf
 tags:
@@ -44,7 +54,7 @@ If you are interested in speaking at our next meetup then please contact [Ender 
 
 ## Looking for a Cadence Role?
 
-The Cadence teeam at Uber are recruiting for a Fullstack Engineer. If you are interested then please contact [Ender Demirkaya](https://www.linkedin.com/in/enderdemirkaya/) for more details.
+The Cadence team at Uber is recruiting for a Fullstack Engineer. If you are interested then please contact [Ender Demirkaya](https://www.linkedin.com/in/enderdemirkaya/) for more details.
 
 ## Cadence in the News!
 
@@ -61,6 +71,6 @@ Below are a selection of Cadence related articles, blogs and whitepapers. Please
 - [Cadence Technical Office Hours - 26th September 2022 @ 9am PT](https://calendar.google.com/calendar/u/0/embed?src=e6r40gp3c2r01054id7e99dlac@group.calendar.google.com&ctz=America/Los_Angeles)
 
 
-If you have any news or topics you'd like us to include in our next update then please join our [Slack](http://t.uber.com/cadence-slack)#community channel.
+If you have any news or topics you'd like us to include in our next update then please join our [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ)#community channel.
 
-Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](http://t.uber.com/cadence-slack) channel.
+Please remember that this update is for you - so if you have any comments or feedback that could help us improve it then please share it with us in the #community [Slack](https://join.slack.com/t/uber-cadence/shared_invite/zt-3sdz5oow2-TXL478KDhHvJOuUm0nItiQ) channel.

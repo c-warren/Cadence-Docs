@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Infrastructure provisioning
+description: This page describes how Cadence is used for infrastructure provisioning scenarios, providing fault-tolerant orchestration of long-running operations at scale with uniqueness guarantees.
+keywords:
+  - cadence provisioning
+  - infrastructure provisioning cadence
+  - cadence kubernetes provisioning
+  - cadence cloud provisioning
+  - cadence locking
+  - cadence fault tolerant provisioning
+  - cadence use case
+  - cadence infrastructure provisioning tutorial
 permalink: /docs/use-cases/provisioning
 ---
-
-# Infrastructure provisioning
 
 Provisioning a new datacenter or a pool of machines in a public cloud is a potentially long running operation with
 a lot of possibilities for intermittent failures. The scale is also a concern when tens or even hundreds of thousands of resources should be provisioned and configured. One useful feature for provisioning scenarios is Cadence support for routing :activity: execution to a specific process or host.
@@ -12,7 +20,18 @@ a lot of possibilities for intermittent failures. The scale is also a concern wh
 A lot of operations require some sort of locking to ensure that no more than one mutation is executed on a resource at a time.
 Cadence provides strong guarantees of uniqueness by business ID. This can be used to implement such locking behavior in a fault tolerant and scalable manner.
 
+## Samples
+
+These samples demonstrate the two techniques described above rather than a complete provisioning system:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Locking by business ID** | Mutex workflow that serializes mutations on a shared resource | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/recipes/mutex) |
+| **Host-specific task routing** | Routes activities to a specific host through a host task list | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/cmd/samples/fileprocessing) · [Java](https://github.com/cadence-workflow/cadence-java-samples/tree/master/src/main/java/com/uber/cadence/samples/fileprocessing) |
+
+---
+
 Some real-world use cases:
 
- * [Using Cadence workflows to spin up Kubernetes, by Banzai Cloud](https://banzaicloud.com/blog/introduction-to-cadence/)
+ * [Using Cadence workflows to spin up Kubernetes, by Banzai Cloud](https://web.archive.org/web/20230930234856/https://banzaicloud.com/blog/introduction-to-cadence/) (archived; banzaicloud.com is no longer resolvable after the Cisco acquisition)
  * [Using Cadence to orchestrate cluster life cycle in HashiCorp Consul, by HashiCorp](https://www.youtube.com/watch?v=kDlrM6sgk2k&feature=youtu.be&t=1188)

@@ -1,14 +1,21 @@
 ---
 layout: default
 title: Introduction
+description: This page introduces the core concepts of Cadence, including workflows, activities, events, queries, and deployment topology for building distributed applications.
+keywords:
+  - cadence concepts
+  - cadence introduction
+  - cadence workflows
+  - cadence activities
+  - cadence distributed applications
+  - cadence overview
+  - cadence topology
 permalink: /docs/concepts
 ---
 
-# Concepts
-
 Cadence is a new developer friendly way to develop distributed applications.
 
-It borrows the core terminology from the workflow-automation space. So its concepts include [workflows](01-workflows.md) and [activities](02-activities.md). :workflow:Workflows: can react to [events](03-events.md) and return internal state through [queries](04-queries.md).
+It borrows the core terminology from the workflow-automation space. So its concepts include [workflows](01-workflows.md) and [activities](02-activities.md). :workflow:Workflows: can react to [events](03-events.md), wait durably with [timers](17-timers.md), and return internal state through [queries](04-queries.md).
 
 The [deployment topology](05-topology.md) explains how all these concepts are mapped to deployable software components.
 

@@ -1,10 +1,18 @@
 ---
 layout: default
 title: Java hello world
+description: This page provides step-by-step instructions for writing and running your first Cadence workflow using the Java client, including how to define activities, workers, and start a workflow execution.
+keywords:
+  - cadence java hello world
+  - cadence java client
+  - java workflow tutorial
+  - cadence getting started java
+  - cadence java sample
+  - cadence java gradle
+  - cadence workflow java
 permalink: /docs/get-started/java-hello-world
 ---
 
-# Java Hello World
 This section provides step by step instructions on how to write and run a HelloWorld with Java.
 
 For complete, ready to build samples covering all the key Cadence concepts go to [Cadence-Java-Samples](https://github.com/cadence-workflow/cadence-java-samples).
@@ -92,6 +100,10 @@ public class GettingStarted {
 ```
 To link the :workflow: implementation to the Cadence framework, it should be registered with a :worker: that connects to
 a Cadence Service. By default the :worker: connects to the locally running Cadence service.
+
+:::note
+The `WorkflowServiceTChannel` example below applies to the 3.x Java client. The 4.x client removed TChannel and Thrift; use `WorkflowServiceGrpc` instead. Java 3.x supports both transports.
+:::
 
 ```java
 import com.uber.cadence.client.WorkflowClient;

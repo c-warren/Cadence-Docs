@@ -1,15 +1,38 @@
 ---
 layout: default
 title: Workflows
+description: "Cadence workflows are durable execution functions: code that runs as ordinary application logic but survives process restarts, failures, and long pauses without any extra infrastructure."
+keywords:
+  - cadence workflow
+  - cadence workflow concept
+  - durable execution
+  - durable execution model
+  - fault-oblivious workflow
+  - stateful workflow
+  - cadence durable function
+  - cadence workflow definition
+  - cadence workflow example
+  - durable workflow
+  - cadence workflows tutorial
 permalink: /docs/concepts/workflows
 ---
 
-# Fault-oblivious stateful workflow code
+# Workflows
 
-## Overview
+The central abstraction in Cadence is a **durable execution function**: ordinary application code that continues running correctly across process restarts, infrastructure failures, and arbitrary pauses. You write it as a plain function; Cadence handles making it durable.
 
-Cadence core abstraction is a **fault-oblivious stateful :workflow:**. The state of the :workflow: code, including local variables and threads it creates, is immune to process and Cadence service failures.
-This is a very powerful concept as it encapsulates state, processing threads, durable timers and :event: handlers.
+More precisely, Cadence calls this a **fault-oblivious stateful :workflow:**. The state of the :workflow: code, including local variables and threads it creates, is immune to process and Cadence service failures. This is a very powerful concept as it encapsulates state, processing threads, durable timers and :event: handlers.
+
+## Samples
+
+Runnable workflow samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Hello World** | One workflow invoking a single activity | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/hello_world) · [Java](https://github.com/cadence-workflow/cadence-java-samples/blob/master/src/main/java/com/uber/cadence/samples/hello/HelloActivity.java) |
+| **Sequential activities** | Several activities chained, passing results between them | [Go](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/greetings) · [Java](https://github.com/cadence-workflow/cadence-java-samples/tree/master/src/main/java/com/uber/cadence/samples/calculation) |
+
+Workflow-start options and their defaults are documented in each SDK's source: [Go `StartWorkflowOptions`](https://github.com/cadence-workflow/cadence-go-client/blob/v1.3.1/internal/client.go), [Java `WorkflowOptions`](https://github.com/cadence-workflow/cadence-java-client/blob/v4.0.0/src/main/java/com/uber/cadence/client/WorkflowOptions.java), and [Python `StartWorkflowOptions`](https://github.com/cadence-workflow/cadence-python-client/blob/v0.4.0/cadence/client.py).
 
 ## Example
 
@@ -23,7 +46,7 @@ Another commonly employed approach is to use a timer service and queues. Any upd
 
 With Cadence, the entire logic can be encapsulated in a simple durable function that directly implements the business logic. Because the function is stateful, the implementer doesn't need to employ any additional systems to ensure durability and fault tolerance.
 
-Here is an example :workflow: that implements the subscription management use case. It is in Java, but Go is also supported. The Python and .NET libraries are under active development.
+Here is an example :workflow: that implements the subscription management use case. It is in Java; the project also maintains production-ready Go and Python SDKs.
 
 ```java
 // This SubscriptionWorkflow interface is an example of defining a workflow in Cadence
@@ -65,7 +88,7 @@ public class SubscriptionWorkflowImpl implements SubscriptionWorkflow {
         // Cadence supports indefinitely running workflow but some advanced techniques are needed
         while (billingPeriodNum < customer.getSubscription().getPeriodsInSubcription()) {
 
-            // Workflow.await tells Cadence to pause the workflow at this stage (saving it's state to the database)
+            // Workflow.await tells Cadence to pause the workflow at this stage (saving its state to the database)
             // Execution restarts when the billing period time has passed or the subscriptionCancelled event is received , whichever comes first
             Workflow.await(customer.getSubscription().getBillingPeriod(), () -> subscriptionCancelled);
 
@@ -186,4 +209,4 @@ Some :workflow:workflows: require a guarantee that they keep running even in pre
 - `NonRetryableErrorReasons` allows to specify errors that shouldn't be retried. For example, retrying invalid arguments error doesn't make sense in some scenarios.
 
 ## How does workflow run 
-You may wonder how it works. Behind the scenes, workflow decision is driving the whole workflow running. It's the internal entities for client and server to run your workflows. If this is interesting to you, read this [stack Overflow QA](https://stackoverflow.com/questions/62904129/what-exactly-is-a-cadence-decision-task/63964726#63964726).
+You may wonder how it works. Behind the scenes, workflow decision is driving the whole workflow running. It's the internal entities for client and server to run your workflows. If this is interesting to you, read this [Stack Overflow QA](https://stackoverflow.com/questions/62904129/what-exactly-is-a-cadence-decision-task/63964726#63964726).

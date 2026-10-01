@@ -1,10 +1,19 @@
 ---
 layout: default
 title: Signals
+description: This page explains how to use signals in Cadence to send data asynchronously to running workflows, including how to receive signals via channels and use the SignalWithStart API.
+keywords:
+  - cadence signals
+  - workflow signals
+  - SignalWithStart
+  - signal channel
+  - workflow communication
+  - async workflow
+  - go client signals
+  - cadence go client
+  - cadence go signals tutorial
 permalink: /docs/go-client/signals
 ---
-
-# Signals
 
 :signal:Signals: provide a mechanism to send data directly to a running :workflow:. Previously, you had
 two options for passing data to the :workflow: implementation:
@@ -25,6 +34,17 @@ a running :workflow:. When a :signal: is received for a running :workflow:, Cade
 and the payload in the :workflow: history. The :workflow: can then process the :signal: at any time
 afterwards without the risk of losing the information. The :workflow: also has the option to stop
 execution by blocking on a :signal: channel.
+
+## Samples
+
+Runnable signal samples:
+
+| Sample | Description | Code |
+|--------|-------------|------|
+| **Signal handling** | Simple and await-signal workflow variants that receive external signals | [signal](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/signal) |
+| **Signal counter** | Workflow that accumulates signal events into a counter | [signalcounter](https://github.com/cadence-workflow/cadence-samples/tree/master/new_samples/signalcounter) |
+
+---
 
 ```go
 var signalVal string
